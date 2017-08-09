@@ -699,10 +699,10 @@
             </objects>
             <point key="canvasLocation" x="-64" y="665"/>
         </scene>
-        <!--View Controller-->
+        <!--Thumbs View Controller-->
         <scene sceneID="AYa-vx-pdZ">
             <objects>
-                <viewController id="NBE-2b-7jn" sceneMemberID="viewController">
+                <viewController id="NBE-2b-7jn" customClass="ThumbsViewController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="dOs-si-abC">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -712,10 +712,10 @@
             </objects>
             <point key="canvasLocation" x="606" y="484"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="APt-WG-onx">
             <objects>
-                <viewController id="u9H-pr-TaD" sceneMemberID="viewController">
+                <viewController id="u9H-pr-TaD" customClass="MainViewController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1B5-Yk-zQx">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
