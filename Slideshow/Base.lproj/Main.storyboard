@@ -812,7 +812,7 @@
                                     </stackView>
                                     <imageView horizontalHuggingPriority="240" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-MK-0FO">
                                         <rect key="frame" x="0.0" y="60" width="919" height="513"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="benderama" id="NSC-Fd-D0n"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
                                         <rect key="frame" x="277.5" y="0.0" width="364" height="52"/>
@@ -1010,6 +1010,7 @@
                         <outlet property="gotoTextField" destination="3XZ-uG-0uA" id="GJw-jT-UZO"/>
                         <outlet property="imageFilenameLabel" destination="5bB-La-bvH" id="Mnb-Z0-BpF"/>
                         <outlet property="imageIndexLabel" destination="vlv-C9-MNY" id="0Et-pV-Snz"/>
+                        <outlet property="mainImage" destination="yFS-MK-0FO" id="Coy-gk-d3f"/>
                     </connections>
                 </viewController>
                 <customObject id="N6j-hd-6W8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

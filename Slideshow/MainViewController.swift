@@ -33,6 +33,7 @@ class MainViewController: NSViewController {
     }
 
     @IBAction func nextBtnClicked(_ sender: NSButton) {
+        next()
     }
 
     @IBAction func prevBtnClicked(_ sender: NSButton) {
@@ -45,6 +46,34 @@ class MainViewController: NSViewController {
     }
 
 
+    @IBOutlet weak var mainImage: NSImageView!
+
+    func next() {
+        let mgr = getImageManager()
+        mgr!.incrementIndex(1)
+        display(url: mgr!.currentFile)
+    }
+
+    func getImageManager() -> ImagesManager? {
+        guard let splitVC = parent as? TopViewController else { return nil }
+        guard var imagesManager = splitVC.imagesManager as? ImagesManager else { return nil }
+        return imagesManager
+    }
+
+    func display(url: URL) {
+        if isViewLoaded {
+            let mgr = getImageManager()
+            if mgr != nil {
+                print("\(mgr!.currentIndex+1): \(url.path)")
+                if url.pathExtension.lowercased() == "gif" {
+                    if let info = gifInfo(url: url) {
+                        print("gif info: \(info)")
+                    }
+                }
+                mainImage.image = NSImage.init(contentsOf: url)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
