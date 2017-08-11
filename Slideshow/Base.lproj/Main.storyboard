@@ -721,26 +721,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="959" height="645"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-9h-4w1" userLabel="Main Stack View">
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-9h-4w1" userLabel="Main Stack View">
                                 <rect key="frame" x="20" y="20" width="919" height="605"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-Oh-dqu" userLabel="Header Stack View">
-                                        <rect key="frame" x="0.0" y="581" width="262" height="24"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-Oh-dqu" userLabel="Header Stack View">
+                                        <rect key="frame" x="0.0" y="581" width="919" height="24"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
-                                                <rect key="frame" x="0.0" y="7" width="74" height="17"/>
+                                                <rect key="frame" x="0.0" y="3.5" width="731" height="17"/>
                                                 <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-C9-MNY" userLabel="Image Index Label">
-                                                        <rect key="frame" x="-2" y="0.0" width="37" height="17"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="A90-4d-pKK">
+                                                    <textField horizontalHuggingPriority="300" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-C9-MNY" userLabel="Image Index Label">
+                                                        <rect key="frame" x="-2" y="0.0" width="84" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="HO2-ro-foA"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Index" placeholderString="1000/10000" id="A90-4d-pKK">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-La-bvH" userLabel="Image Filename Label">
-                                                        <rect key="frame" x="39" y="0.0" width="37" height="17"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="rkM-wS-YFh">
+                                                    <textField horizontalHuggingPriority="240" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-La-bvH" userLabel="Image Filename Label">
+                                                        <rect key="frame" x="86" y="0.0" width="647" height="17"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Image File Name" id="rkM-wS-YFh">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -756,11 +759,11 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o7S-Wb-0SW">
-                                                <rect key="frame" x="82" y="2" width="180" height="22"/>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o7S-Wb-0SW">
+                                                <rect key="frame" x="739" y="1" width="180" height="22"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-0F-Tdx">
-                                                        <rect key="frame" x="-2" y="5" width="44" height="17"/>
+                                                        <rect key="frame" x="-2" y="2.5" width="44" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="xRO-Mu-4CP"/>
                                                         </constraints>
@@ -808,11 +811,11 @@
                                         </customSpacing>
                                     </stackView>
                                     <imageView horizontalHuggingPriority="260" verticalHuggingPriority="260" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-MK-0FO">
-                                        <rect key="frame" x="0.0" y="60" width="800" height="513"/>
+                                        <rect key="frame" x="59.5" y="60" width="800" height="513"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="364" height="52"/>
+                                        <rect key="frame" x="277.5" y="0.0" width="364" height="52"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j82-TH-bci">
                                                 <rect key="frame" x="0.0" y="1" width="68" height="50"/>
