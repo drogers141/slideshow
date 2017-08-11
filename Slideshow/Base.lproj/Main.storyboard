@@ -826,6 +826,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="copyBtnClicked:" target="u9H-pr-TaD" id="mIw-Nj-m1b"/>
+                                                        </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wzy-nH-0Zo">
                                                         <rect key="frame" x="-6" y="-7" width="80" height="32"/>
@@ -833,6 +836,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="deleteBtnClicked:" target="u9H-pr-TaD" id="aZt-Tx-GJu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -853,6 +859,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="pageBackwardBtnClicked:" target="u9H-pr-TaD" id="EGH-2D-UO6"/>
+                                                        </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUs-OJ-Zv2">
                                                         <rect key="frame" x="47" y="-7" width="49" height="32"/>
@@ -860,6 +869,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="prevBtnClicked:" target="u9H-pr-TaD" id="C4Y-J5-SnP"/>
+                                                        </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xbr-N7-4JI">
                                                         <rect key="frame" x="92" y="-7" width="49" height="32"/>
@@ -867,6 +879,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="nextBtnClicked:" target="u9H-pr-TaD" id="x6d-eV-ATq"/>
+                                                        </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BxA-6k-Y06">
                                                         <rect key="frame" x="137" y="-7" width="57" height="32"/>
@@ -874,6 +889,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="pageForwardBtnClicked:" target="u9H-pr-TaD" id="M3y-dl-dzx"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -898,6 +916,9 @@
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="autoplayBtnClicked:" target="u9H-pr-TaD" id="tfy-o2-vMd"/>
+                                                        </connections>
                                                     </button>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-9Q-ihg">
                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="22"/>
@@ -910,7 +931,7 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH9-is-ipU">
+                                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH9-is-ipU" userLabel="Delay Text Field">
                                                                 <rect key="frame" x="42" y="0.0" width="50" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="xvC-IX-jGC"/>
@@ -920,6 +941,9 @@
                                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
+                                                                <connections>
+                                                                    <action selector="delayTextFieldChanged:" target="u9H-pr-TaD" id="HrK-JX-cMO"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <visibilityPriorities>
@@ -971,12 +995,18 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="EFC-9h-4w1" secondAttribute="trailing" constant="20" symbolic="YES" id="9Fk-2r-Zh0"/>
+                            <constraint firstItem="EFC-9h-4w1" firstAttribute="top" secondItem="1B5-Yk-zQx" secondAttribute="top" constant="20" symbolic="YES" id="H9t-EP-KZV"/>
                             <constraint firstAttribute="bottom" secondItem="EFC-9h-4w1" secondAttribute="bottom" constant="20" symbolic="YES" id="Im6-wD-wjp"/>
+                            <constraint firstAttribute="bottom" secondItem="EFC-9h-4w1" secondAttribute="bottom" constant="20" symbolic="YES" id="MZi-Ak-j8q"/>
                             <constraint firstItem="EFC-9h-4w1" firstAttribute="leading" secondItem="1B5-Yk-zQx" secondAttribute="leading" constant="20" symbolic="YES" id="Vzt-J0-UdX"/>
                             <constraint firstItem="EFC-9h-4w1" firstAttribute="top" secondItem="1B5-Yk-zQx" secondAttribute="top" constant="20" symbolic="YES" id="bb4-3Z-SCy"/>
+                            <constraint firstAttribute="trailing" secondItem="EFC-9h-4w1" secondAttribute="trailing" constant="20" symbolic="YES" id="jLz-Oa-y3p"/>
+                            <constraint firstItem="EFC-9h-4w1" firstAttribute="leading" secondItem="1B5-Yk-zQx" secondAttribute="leading" constant="20" symbolic="YES" id="mpL-gT-3w3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="autoplayButton" destination="Sbd-0S-3Ml" id="1Fw-sO-GSJ"/>
+                        <outlet property="delayTextField" destination="PH9-is-ipU" id="tf1-Fl-fWP"/>
                         <outlet property="gotoTextField" destination="3XZ-uG-0uA" id="GJw-jT-UZO"/>
                         <outlet property="imageFilenameLabel" destination="5bB-La-bvH" id="Mnb-Z0-BpF"/>
                         <outlet property="imageIndexLabel" destination="vlv-C9-MNY" id="0Et-pV-Snz"/>
@@ -984,7 +1014,7 @@
                 </viewController>
                 <customObject id="N6j-hd-6W8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="723" y="1011"/>
+            <point key="canvasLocation" x="542" y="876"/>
         </scene>
     </scenes>
     <resources>

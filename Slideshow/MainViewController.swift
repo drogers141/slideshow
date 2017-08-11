@@ -17,6 +17,34 @@ class MainViewController: NSViewController {
     @IBAction func gotoTextChanged(_ sender: NSTextField) {
     }
 
+    @IBAction func copyBtnClicked(_ sender: NSButton) {
+    }
+    @IBAction func deleteBtnClicked(_ sender: NSButton) {
+    }
+
+    @IBOutlet var delayTextField: NSTextField!
+
+    @IBAction func delayTextFieldChanged(_ sender: NSTextField) {
+    }
+
+    @IBOutlet var autoplayButton: NSButton!
+
+    @IBAction func autoplayBtnClicked(_ sender: NSButton) {
+    }
+
+    @IBAction func nextBtnClicked(_ sender: NSButton) {
+    }
+
+    @IBAction func prevBtnClicked(_ sender: NSButton) {
+    }
+
+    @IBAction func pageForwardBtnClicked(_ sender: NSButton) {
+    }
+
+    @IBAction func pageBackwardBtnClicked(_ sender: NSButton) {
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
