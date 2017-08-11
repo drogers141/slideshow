@@ -3,7 +3,7 @@
 //  HelloSlideshow
 //
 //  Created by David Rogers on 7/24/17.
-//  Copyright © 2017 David Rogers. All rights reserved.
+//  Note the AnimatedImage class started with example code from Apple developer examples.
 //
 
 import Foundation
