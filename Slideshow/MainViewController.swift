@@ -48,9 +48,10 @@ class MainViewController: NSViewController {
         pageBackward()
     }
 
-
     @IBOutlet weak var mainImage: NSImageView!
 
+    // note the need for an implicitly unwrapped optional to avoid null-checking, etc
+    // everywhere this member is used
     var imagesManager: ImagesManager!
 
     func next() {
