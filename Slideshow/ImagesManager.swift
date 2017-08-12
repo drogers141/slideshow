@@ -46,7 +46,10 @@ class ImagesManager {
 
     // increment currentIndex - negative or positive
     func incrementIndex(_ n: Int) {
-        currentIndex += n
+        currentIndex = (currentIndex + n) % currentFiles.count
+        if currentIndex < 0 {
+            currentIndex = currentFiles.count + currentIndex
+        }
     }
 
     // get images from a directory

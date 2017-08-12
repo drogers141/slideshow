@@ -724,7 +724,7 @@
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-9h-4w1" userLabel="Main Stack View">
                                 <rect key="frame" x="20" y="20" width="919" height="605"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-Oh-dqu" userLabel="Header Stack View">
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="260" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-Oh-dqu" userLabel="Header Stack View">
                                         <rect key="frame" x="0.0" y="581" width="919" height="24"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
@@ -810,9 +810,9 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <imageView horizontalHuggingPriority="240" verticalHuggingPriority="240" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-MK-0FO">
-                                        <rect key="frame" x="0.0" y="60" width="919" height="513"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" image="benderama" id="NSC-Fd-D0n"/>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-MK-0FO">
+                                        <rect key="frame" x="-3" y="133" width="925" height="451"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" imageFrameStyle="photo" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
                                         <rect key="frame" x="277.5" y="0.0" width="364" height="52"/>
@@ -981,6 +981,12 @@
                                         </customSpacing>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="l7Q-xZ-sXI" firstAttribute="top" secondItem="yFS-MK-0FO" secondAttribute="bottom" id="3eJ-aE-GDT"/>
+                                    <constraint firstAttribute="trailing" secondItem="yFS-MK-0FO" secondAttribute="trailing" id="RtJ-zU-Bmf"/>
+                                    <constraint firstItem="yFS-MK-0FO" firstAttribute="leading" secondItem="EFC-9h-4w1" secondAttribute="leading" id="Y6V-Jd-SV7"/>
+                                    <constraint firstItem="yFS-MK-0FO" firstAttribute="top" secondItem="LaT-Oh-dqu" secondAttribute="bottom" id="e05-xr-Emc"/>
+                                </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>

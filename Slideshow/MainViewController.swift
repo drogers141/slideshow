@@ -37,46 +37,56 @@ class MainViewController: NSViewController {
     }
 
     @IBAction func prevBtnClicked(_ sender: NSButton) {
+        previous()
     }
 
     @IBAction func pageForwardBtnClicked(_ sender: NSButton) {
+        pageForward()
     }
 
     @IBAction func pageBackwardBtnClicked(_ sender: NSButton) {
+        pageBackward()
     }
 
 
     @IBOutlet weak var mainImage: NSImageView!
 
-    func next() {
-        let mgr = getImageManager()
-        mgr!.incrementIndex(1)
-        display(url: mgr!.currentFile)
-    }
+    var imagesManager: ImagesManager!
 
-    func getImageManager() -> ImagesManager? {
-        guard let splitVC = parent as? TopViewController else { return nil }
-        guard var imagesManager = splitVC.imagesManager as? ImagesManager else { return nil }
-        return imagesManager
+    func next() {
+        imagesManager.incrementIndex(1)
+        display(url: imagesManager.currentFile)
+    }
+    func previous() {
+        imagesManager.incrementIndex(-1)
+        display(url: imagesManager.currentFile)
+    }
+    func pageForward() {
+        imagesManager.incrementIndex(10)
+        display(url: imagesManager.currentFile)
+    }
+    func pageBackward() {
+        imagesManager.incrementIndex(-10)
+        display(url: imagesManager.currentFile)
     }
 
     func display(url: URL) {
         if isViewLoaded {
-            let mgr = getImageManager()
-            if mgr != nil {
-                print("\(mgr!.currentIndex+1): \(url.path)")
-                if url.pathExtension.lowercased() == "gif" {
-                    if let info = gifInfo(url: url) {
-                        print("gif info: \(info)")
-                    }
+            print("\(imagesManager.currentIndex+1): \(url.path)")
+            if url.pathExtension.lowercased() == "gif" {
+                if let info = gifInfo(url: url) {
+                    print("gif info: \(info)")
                 }
-                mainImage.image = NSImage.init(contentsOf: url)
             }
+            mainImage.image = NSImage.init(contentsOf: url)
         }
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+
+        guard let splitVC = parent as? TopViewController else { return }
+        imagesManager = splitVC.imagesManager as ImagesManager
     }
 
     override var acceptsFirstResponder: Bool {
