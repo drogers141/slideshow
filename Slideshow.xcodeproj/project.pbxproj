@@ -17,6 +17,7 @@
 		FC41A6F21F3B1BCF00E7BE7F /* ImagesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6F11F3B1BCF00E7BE7F /* ImagesManager.swift */; };
 		FC41A6F41F3B26E100E7BE7F /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6F31F3B26E100E7BE7F /* CLI.swift */; };
 		FC41A6F71F3C6EDC00E7BE7F /* benderama.png in Resources */ = {isa = PBXBuildFile; fileRef = FC41A6F61F3C6EDC00E7BE7F /* benderama.png */; };
+		FC41A6FA1F400E5E00E7BE7F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6F91F400E5E00E7BE7F /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		FC41A6F11F3B1BCF00E7BE7F /* ImagesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesManager.swift; sourceTree = "<group>"; };
 		FC41A6F31F3B26E100E7BE7F /* CLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
 		FC41A6F61F3C6EDC00E7BE7F /* benderama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = benderama.png; sourceTree = "<group>"; };
+		FC41A6F91F400E5E00E7BE7F /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				FC41A6E71F3B113D00E7BE7F /* TopViewController.swift */,
 				FC41A6C11F39C15B00E7BE7F /* Assets.xcassets */,
 				FC41A6C31F39C15B00E7BE7F /* Main.storyboard */,
+				FC41A6F91F400E5E00E7BE7F /* WindowController.swift */,
 				FC41A6ED1F3B149500E7BE7F /* MainViewController.swift */,
 				FC41A6C61F39C15B00E7BE7F /* Info.plist */,
 				FC41A6F11F3B1BCF00E7BE7F /* ImagesManager.swift */,
@@ -157,6 +160,7 @@
 				FC41A6EC1F3B145A00E7BE7F /* ThumbsViewController.swift in Sources */,
 				FC41A6F21F3B1BCF00E7BE7F /* ImagesManager.swift in Sources */,
 				FC41A6EE1F3B149500E7BE7F /* MainViewController.swift in Sources */,
+				FC41A6FA1F400E5E00E7BE7F /* WindowController.swift in Sources */,
 				FC41A6F41F3B26E100E7BE7F /* CLI.swift in Sources */,
 				FC41A6F01F3B176D00E7BE7F /* Gif.swift in Sources */,
 			);
