@@ -11,10 +11,11 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // necessary when launching from the commandline
+        NSApp.activate(ignoringOtherApps: true)
+        // NSApp is global within app - below is how to do it otherwise
+        //        NSApplication.shared().activate(ignoringOtherApps: true)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
