@@ -705,13 +705,50 @@
             <objects>
                 <viewController id="NBE-2b-7jn" customClass="ThumbsViewController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="dOs-si-abC">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="693" height="518"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZES-g9-jMB">
+                                <rect key="frame" x="0.0" y="0.0" width="693" height="518"/>
+                                <clipView key="contentView" drawsBackground="NO" id="2CQ-hZ-wrz">
+                                    <rect key="frame" x="1" y="1" width="691" height="516"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView id="gIO-Q4-LLZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="691" height="516"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="UnQ-vt-p6C">
+                                                <size key="itemSize" width="50" height="50"/>
+                                            </collectionViewFlowLayout>
+                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="XYv-88-OTx">
+                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="jmY-3S-h6k">
+                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="ZES-g9-jMB" firstAttribute="leading" secondItem="dOs-si-abC" secondAttribute="leading" id="0wc-mu-K4D"/>
+                            <constraint firstAttribute="trailing" secondItem="ZES-g9-jMB" secondAttribute="trailing" id="4SF-0q-wiM"/>
+                            <constraint firstItem="ZES-g9-jMB" firstAttribute="top" secondItem="dOs-si-abC" secondAttribute="top" id="6tj-cL-Vsl"/>
+                            <constraint firstAttribute="bottom" secondItem="ZES-g9-jMB" secondAttribute="bottom" id="zgT-tA-JSd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="gIO-Q4-LLZ" id="7lE-44-woy"/>
+                    </connections>
                 </viewController>
                 <customObject id="b7b-To-mSx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="484"/>
+            <point key="canvasLocation" x="746.5" y="417"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="APt-WG-onx">

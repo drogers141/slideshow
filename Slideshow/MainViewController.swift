@@ -171,7 +171,10 @@ class MainViewController: NSViewController {
             pageForward()
 
         default:
-            print("another key: \(event.keyCode)")
+            if Int(event.keyCode) != 53 {
+                // 53 is ESC - handled by window controller as cancel()
+                print("another key: \(event.keyCode)")
+            }
             super.keyDown(with: event)
         }
     }
