@@ -18,6 +18,9 @@
 		FC41A6F41F3B26E100E7BE7F /* CLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6F31F3B26E100E7BE7F /* CLI.swift */; };
 		FC41A6F71F3C6EDC00E7BE7F /* benderama.png in Resources */ = {isa = PBXBuildFile; fileRef = FC41A6F61F3C6EDC00E7BE7F /* benderama.png */; };
 		FC41A6FA1F400E5E00E7BE7F /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6F91F400E5E00E7BE7F /* WindowController.swift */; };
+		FC41A6FD1F40240000E7BE7F /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6FB1F40240000E7BE7F /* CollectionViewItem.swift */; };
+		FC41A6FE1F40240000E7BE7F /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC41A6FC1F40240000E7BE7F /* CollectionViewItem.xib */; };
+		FC41A7001F402E1800E7BE7F /* ThumbImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6FF1F402E1800E7BE7F /* ThumbImageFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		FC41A6F31F3B26E100E7BE7F /* CLI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLI.swift; sourceTree = "<group>"; };
 		FC41A6F61F3C6EDC00E7BE7F /* benderama.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = benderama.png; sourceTree = "<group>"; };
 		FC41A6F91F400E5E00E7BE7F /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		FC41A6FB1F40240000E7BE7F /* CollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
+		FC41A6FC1F40240000E7BE7F /* CollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
+		FC41A6FF1F402E1800E7BE7F /* ThumbImageFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbImageFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +72,21 @@
 		FC41A6BC1F39C15B00E7BE7F /* Slideshow */ = {
 			isa = PBXGroup;
 			children = (
-				FC41A6F61F3C6EDC00E7BE7F /* benderama.png */,
-				FC41A6EF1F3B176D00E7BE7F /* Gif.swift */,
-				FC41A6EB1F3B145A00E7BE7F /* ThumbsViewController.swift */,
 				FC41A6BD1F39C15B00E7BE7F /* AppDelegate.swift */,
+				FC41A6F91F400E5E00E7BE7F /* WindowController.swift */,
 				FC41A6E71F3B113D00E7BE7F /* TopViewController.swift */,
+				FC41A6ED1F3B149500E7BE7F /* MainViewController.swift */,
+				FC41A6EB1F3B145A00E7BE7F /* ThumbsViewController.swift */,
+				FC41A6FB1F40240000E7BE7F /* CollectionViewItem.swift */,
 				FC41A6C11F39C15B00E7BE7F /* Assets.xcassets */,
 				FC41A6C31F39C15B00E7BE7F /* Main.storyboard */,
-				FC41A6F91F400E5E00E7BE7F /* WindowController.swift */,
-				FC41A6ED1F3B149500E7BE7F /* MainViewController.swift */,
-				FC41A6C61F39C15B00E7BE7F /* Info.plist */,
+				FC41A6FC1F40240000E7BE7F /* CollectionViewItem.xib */,
+				FC41A6EF1F3B176D00E7BE7F /* Gif.swift */,
+				FC41A6FF1F402E1800E7BE7F /* ThumbImageFile.swift */,
 				FC41A6F11F3B1BCF00E7BE7F /* ImagesManager.swift */,
 				FC41A6F31F3B26E100E7BE7F /* CLI.swift */,
+				FC41A6C61F39C15B00E7BE7F /* Info.plist */,
+				FC41A6F61F3C6EDC00E7BE7F /* benderama.png */,
 			);
 			path = Slideshow;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC41A6C21F39C15B00E7BE7F /* Assets.xcassets in Resources */,
+				FC41A6FE1F40240000E7BE7F /* CollectionViewItem.xib in Resources */,
 				FC41A6F71F3C6EDC00E7BE7F /* benderama.png in Resources */,
 				FC41A6C51F39C15B00E7BE7F /* Main.storyboard in Resources */,
 			);
@@ -157,11 +167,13 @@
 			files = (
 				FC41A6E81F3B113D00E7BE7F /* TopViewController.swift in Sources */,
 				FC41A6BE1F39C15B00E7BE7F /* AppDelegate.swift in Sources */,
+				FC41A6FD1F40240000E7BE7F /* CollectionViewItem.swift in Sources */,
 				FC41A6EC1F3B145A00E7BE7F /* ThumbsViewController.swift in Sources */,
 				FC41A6F21F3B1BCF00E7BE7F /* ImagesManager.swift in Sources */,
 				FC41A6EE1F3B149500E7BE7F /* MainViewController.swift in Sources */,
 				FC41A6FA1F400E5E00E7BE7F /* WindowController.swift in Sources */,
 				FC41A6F41F3B26E100E7BE7F /* CLI.swift in Sources */,
+				FC41A7001F402E1800E7BE7F /* ThumbImageFile.swift in Sources */,
 				FC41A6F01F3B176D00E7BE7F /* Gif.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
