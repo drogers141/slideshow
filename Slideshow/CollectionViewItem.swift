@@ -15,11 +15,8 @@ class CollectionViewItem: NSCollectionViewItem {
             guard isViewLoaded else { return }
             if let imageFile = imageFile {
                 imageView?.image = imageFile.thumbnail
-                // not doing a label now
-//                textField?.stringValue = imageFile.fileName
             } else {
                 imageView?.image = nil
-//                textField?.stringValue = ""
             }
         }
     }
@@ -28,7 +25,16 @@ class CollectionViewItem: NSCollectionViewItem {
         super.viewDidLoad()
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.lightGray.cgColor
+        // border not showing
+        view.layer?.borderColor = NSColor.white.cgColor
+        view.layer?.borderWidth = 0.0
     }
 
+    override var isSelected: Bool {
+        didSet {
+            // if selected add border
+            view.layer?.borderWidth = isSelected ? 5.0 : 0.0
+        }
+    }
 }
 

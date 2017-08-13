@@ -42,8 +42,6 @@ class ImagesManager {
         currentFiles = ImagesManager.getImages(fileList: fileList)
     }
 
-    //    var currentDir = URL.init(fileURLWithPath: "/Users/drogers/atemp/pics-test")
-
     // increment currentIndex - negative or positive
     func incrementIndex(_ n: Int) {
         currentIndex = (currentIndex + n) % currentFiles.count

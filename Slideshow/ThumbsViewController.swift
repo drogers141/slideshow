@@ -8,11 +8,25 @@
 
 import Cocoa
 
-class ThumbsViewController: NSViewController, NSCollectionViewDataSource {
+class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSCollectionViewDelegate {
 
     @IBOutlet weak var collectionView: NSCollectionView!
 
     let thumbSize = NSSize(width: 120.0, height: 120.0)
+
+    // could do these more swiftly as optional computed property I believe
+    fileprivate func getMainVC() -> MainViewController? {
+        guard let splitVC = parent as? TopViewController else { return nil}
+        return splitVC.childViewControllers[1] as? MainViewController
+    }
+
+    fileprivate func getImagesManager() -> ImagesManager? {
+        if let mainVC = getMainVC() {
+            return mainVC.imagesManager
+        } else {
+            return nil
+        }
+    }
 
     fileprivate func configureCollectionView() {
 
@@ -35,18 +49,15 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource {
     // NSCollectionViewDataSource protocol
 
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let splitVC = parent as? TopViewController else { return 0}
-        if let mainVC = splitVC.childViewControllers[1] as? MainViewController {
-            return mainVC.imagesManager.currentFiles.count
+        if let mgr = getImagesManager() {
+            return mgr.currentFiles.count
         } else {
             return 0
         }
     }
 
-    // 3
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 
-        // 4
         let item = collectionView.makeItem(withIdentifier: "CollectionViewItem", for: indexPath)
         guard let collectionViewItem = item as? CollectionViewItem else {return item}
         guard let splitVC = parent as? TopViewController else { return item }
@@ -56,11 +67,20 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource {
             collectionViewItem.imageFile = imageFile
         }
         return item
+    }
 
-        // 5
-//        let imageFile = ThumbImageFile(url:)
-//        collectionViewItem.imageFile = imageFile
-//        return item
+    // NSCollectionViewDelegate protocol
+
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        print("selected: indexPaths=\(indexPaths)")
+        // assume single selection
+        if let elem = indexPaths.first {
+            let newIndex = elem.item
+            print("newIndex: \(newIndex)")
+            if let mainVC = getMainVC() {
+                mainVC.goto(newIndex)
+            }
+        }
     }
 }
 

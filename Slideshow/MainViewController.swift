@@ -89,6 +89,12 @@ class MainViewController: NSViewController {
         imagesManager.incrementIndex(-10)
         display(url: imagesManager.currentFile)
     }
+    func goto(_ index: Int) {
+        guard imagesManager.currentIndex != index && index < imagesManager.currentFiles.count
+            && index >= 0 else { return }
+        imagesManager.currentIndex = index
+        display(url: imagesManager.currentFile)
+    }
 
     func display(url: URL) {
         if isViewLoaded {

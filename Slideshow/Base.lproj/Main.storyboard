@@ -714,7 +714,7 @@
                                     <rect key="frame" x="1" y="1" width="691" height="516"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="gIO-Q4-LLZ">
+                                        <collectionView selectable="YES" id="gIO-Q4-LLZ">
                                             <rect key="frame" x="0.0" y="0.0" width="691" height="516"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="UnQ-vt-p6C">
@@ -723,6 +723,7 @@
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="NBE-2b-7jn" id="kMJ-Hn-5Wt"/>
+                                                <outlet property="delegate" destination="NBE-2b-7jn" id="0Vr-3S-pks"/>
                                             </connections>
                                         </collectionView>
                                     </subviews>
