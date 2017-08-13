@@ -10,8 +10,10 @@ import Cocoa
 
 class MainViewController: NSViewController {
 
-    @IBOutlet var imageIndexLabel: NSTextField!
-    @IBOutlet var imageFilenameLabel: NSTextField!
+    @IBOutlet weak var imageIndexLabel: NSTextFieldCell!
+    @IBOutlet weak var imageFileName: NSTextFieldCell!
+
+    @IBOutlet weak var mainImage: NSImageView!
 
     @IBOutlet var gotoTextField: NSTextField!
     @IBAction func gotoTextChanged(_ sender: NSTextField) {
@@ -25,11 +27,26 @@ class MainViewController: NSViewController {
     @IBOutlet var delayTextField: NSTextField!
 
     @IBAction func delayTextFieldChanged(_ sender: NSTextField) {
+        autoplayDelay = Double(delayTextField.stringValue)!
+        print("autoplayDelay = \(autoplayDelay)")
+        DispatchQueue.main.async {
+            self.delayTextField.window?.makeFirstResponder(self)
+        }
     }
 
     @IBOutlet var autoplayButton: NSButton!
 
     @IBAction func autoplayBtnClicked(_ sender: NSButton) {
+        if autoplay == true {
+            print("autoplay off")
+            sender.title = "Autoplay"
+            autoplay = false
+        } else {
+            print("autoplay on")
+            sender.title = "Stop"
+            autoplay = true
+            doAutoplay()
+        }
     }
 
     @IBAction func nextBtnClicked(_ sender: NSButton) {
@@ -48,11 +65,13 @@ class MainViewController: NSViewController {
         pageBackward()
     }
 
-    @IBOutlet weak var mainImage: NSImageView!
 
     // note the need for an implicitly unwrapped optional to avoid null-checking, etc
     // everywhere this member is used
-    var imagesManager: ImagesManager!
+    var imagesManager = ImagesManager()
+
+    var autoplay = false
+    var autoplayDelay = 4.0
 
     func next() {
         imagesManager.incrementIndex(1)
@@ -80,14 +99,53 @@ class MainViewController: NSViewController {
                 }
             }
             mainImage.image = NSImage.init(contentsOf: url)
+            imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
+            imageFileName.title = imagesManager.currentFile.path
         }
+    }
+
+    func initImages() {
+        (_, _) = getProcessInfo()
+        let (type, content) = handleProgramArgs()
+        guard content.count > 0 else {
+            print("** no files or dirs **")
+            return
+        }
+        if type == "directories" {
+            self.imagesManager.initFiles(dirList: content)
+        } else if type == "files" {
+            self.imagesManager.initFiles(fileList: content)
+        } else {
+            print("** not directories or files? **")
+        }
+        print("top view init images")
+    }
+
+    func startGUI() {
+        display(url: imagesManager.currentFile)
+        imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
+        imageFileName.title = imagesManager.currentFile.path
+        delayTextField.stringValue = "\(autoplayDelay)"
+        print("autoplayDelay = \(autoplayDelay)")
+
+        // allows the viewcontroller to be a first responder and the key events will be sent to it
+        // otherwise, default behavior was for any keys to go to the text field
+        DispatchQueue.main.async {
+            self.delayTextField.window?.makeFirstResponder(self)
+        }
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let splitVC = parent as? TopViewController else { return }
-        imagesManager = splitVC.imagesManager as ImagesManager
+//        guard let splitVC = parent as? TopViewController else { return }
+//        imagesManager = splitVC.imagesManager as ImagesManager
+
+        initImages()
+        print("currentFiles: \(imagesManager.currentFiles.count)")
+        print("images manager currentFile: \(imagesManager.currentFile)")
+        startGUI()
     }
 
     override var acceptsFirstResponder: Bool {
@@ -97,20 +155,20 @@ class MainViewController: NSViewController {
     override func keyDown(with event: NSEvent) {
         switch Int(event.keyCode) {
         case 123:
-            print("left arrow")
-            //            displayNth(increment: -1)
+//            print("left arrow")
+            previous()
 
         case 124:
-            print("right arrow")
-            //            displayNth(increment: 1)
+//            print("right arrow")
+            next()
 
         case 125:
-            print("down arrow")
-            //            displayNth(increment: -10)
+//            print("down arrow")
+            pageBackward()
 
         case 126:
-            print("up arrow")
-            //            displayNth(increment: 10)
+//            print("up arrow")
+            pageForward()
 
         default:
             print("another key: \(event.keyCode)")
@@ -118,5 +176,23 @@ class MainViewController: NSViewController {
         }
     }
 
+    // TODO handle reverse direction
+    func doAutoplay() {
+        print("doAutoplay")
+//        autoplayDelay = Double(delayTextField.stringValue)!
+        if autoplay == true {
+            next()
+            var delay = autoplayDelay
+            // handle gif timing
+            let url = imagesManager.currentFile
+            if url.pathExtension.lowercased() == "gif" {
+                delay = calculateGifTime(url: url, delay: delay, minLoops: 2)
+            }
+            Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(doAutoplay),
+                                 userInfo: nil, repeats: false)
+        } else {
+            print("autoplay off")
+        }
+    }
 }
 
