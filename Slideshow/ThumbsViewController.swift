@@ -14,6 +14,9 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
     let thumbSize = NSSize(width: 120.0, height: 120.0)
 
+    // no headers so this is the only background
+    let backgroundColor = NSColor.black.cgColor
+
     // could do these more swiftly as optional computed property I believe
     fileprivate func getMainVC() -> MainViewController? {
         guard let splitVC = parent as? TopViewController else { return nil}
@@ -38,7 +41,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
         collectionView.collectionViewLayout = flowLayout
 
         view.wantsLayer = true
-        collectionView.layer?.backgroundColor = NSColor.black.cgColor
+        collectionView.layer?.backgroundColor = backgroundColor
     }
 
     override func viewDidLoad() {

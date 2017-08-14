@@ -10,10 +10,18 @@ import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
 
+    let regularBackgroundColor = NSColor.darkGray.cgColor
+    let gifBackgroundColor = NSColor.lightGray.cgColor
+    // only shown when selected
+    let borderColor = NSColor.white.cgColor
+
     var imageFile: ThumbImageFile? {
         didSet {
             guard isViewLoaded else { return }
             if let imageFile = imageFile {
+                if imageFile.fileName.lowercased().hasSuffix(".gif") {
+                    view.layer?.backgroundColor = gifBackgroundColor
+                }
                 imageView?.image = imageFile.thumbnail
             } else {
                 imageView?.image = nil
@@ -24,9 +32,9 @@ class CollectionViewItem: NSCollectionViewItem {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.lightGray.cgColor
+        view.layer?.backgroundColor = regularBackgroundColor
         // border not showing
-        view.layer?.borderColor = NSColor.white.cgColor
+        view.layer?.borderColor = borderColor
         view.layer?.borderWidth = 0.0
     }
 

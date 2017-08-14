@@ -20,6 +20,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        let screen = NSScreen.main()
+        let screenRect = screen?.visibleFrame
+        NSLog("screen.visibleFrame: \(String(describing: screenRect))")
+//        print("screen.visibleFrame: \(screenRect)")
+//        if let win = NSApp.mainWindow {
+//            let rect = win.frame
+//            print("win: \(rect)")
+//        } else {
+//            print("window gone")
+//        }
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {

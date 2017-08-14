@@ -65,6 +65,15 @@ class MainViewController: NSViewController {
         pageBackward()
     }
 
+    // OTHER CONFIG - TODO: use userdefaults
+
+    // default: NSColor.windowBackgroundColor.cgColor
+    // background for everything but imageview
+    // e.g. NSColor.black.cgColor
+    let backgroundColor = NSColor.windowBackgroundColor.cgColor
+    // not working
+    let imageBackgroundColor = NSColor.black
+
 
     // note the need for an implicitly unwrapped optional to avoid null-checking, etc
     // everywhere this member is used
@@ -105,6 +114,7 @@ class MainViewController: NSViewController {
                 }
             }
             mainImage.image = NSImage.init(contentsOf: url)
+//            mainImage.image?.backgroundColor = imageBackgroundColor
             imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
             imageFileName.title = imagesManager.currentFile.path
         }
@@ -147,6 +157,12 @@ class MainViewController: NSViewController {
 
 //        guard let splitVC = parent as? TopViewController else { return }
 //        imagesManager = splitVC.imagesManager as ImagesManager
+
+        view.wantsLayer = true
+        view.layer?.backgroundColor = backgroundColor
+
+//        mainImage.wantsLayer = true
+//        mainImage.layer?.backgroundColor = imageBackgroundColor.cgColor
 
         initImages()
         print("currentFiles: \(imagesManager.currentFiles.count)")
