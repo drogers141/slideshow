@@ -17,6 +17,17 @@ class MainViewController: NSViewController {
 
     @IBOutlet var gotoTextField: NSTextField!
     @IBAction func gotoTextChanged(_ sender: NSTextField) {
+        let text = gotoTextField.stringValue.trimmingCharacters(in: .whitespaces)
+        let val = Int(text)
+        if val != nil {
+            gotoIndex(val!)
+        } else {
+            gotoGlob(text)
+        }
+        DispatchQueue.main.async {
+            self.gotoTextField.stringValue = ""
+            self.gotoTextField.window?.makeFirstResponder(self)
+        }
     }
 
     @IBAction func copyBtnClicked(_ sender: NSButton) {
@@ -29,7 +40,8 @@ class MainViewController: NSViewController {
     @IBOutlet var delayTextField: NSTextField!
 
     @IBAction func delayTextFieldChanged(_ sender: NSTextField) {
-        autoplayDelay = Double(delayTextField.stringValue)!
+        let text = delayTextField.stringValue.trimmingCharacters(in: .whitespaces)
+        autoplayDelay = Double(text)!
         print("autoplayDelay = \(autoplayDelay)")
         DispatchQueue.main.async {
             self.delayTextField.window?.makeFirstResponder(self)
@@ -108,11 +120,16 @@ class MainViewController: NSViewController {
         imagesManager.incrementIndex(-10)
         displayCurrent()
     }
-    func goto(_ index: Int) {
+    // note we should be able to overload goto(), but obj-c based selector
+    // is happening behind the scenes, so a clear workaround
+    func gotoIndex(_ index: Int) {
         guard imagesManager.currentIndex != index && index < imagesManager.currentFiles.count
             && index >= 0 else { return }
         imagesManager.currentIndex = index
         displayCurrent()
+    }
+    func gotoGlob(_ glob: String) {
+        print("*** implement goto glob ***")
     }
 
     func display(url: URL) {
@@ -249,6 +266,13 @@ class MainViewController: NSViewController {
             super.keyDown(with: event)
         }
     }
+
+    override func mouseDown(with event: NSEvent) {
+        DispatchQueue.main.async {
+            self.mainImage.window?.makeFirstResponder(self)
+        }
+    }
+
 
     // TODO handle reverse direction
     func doAutoplay() {

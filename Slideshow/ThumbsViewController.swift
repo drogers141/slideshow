@@ -82,7 +82,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
             let newIndex = elem.item
             print("newIndex: \(newIndex)")
             if let mainVC = getMainVC() {
-                mainVC.goto(newIndex)
+                mainVC.gotoIndex(newIndex)
             }
             let selectedIndexes = collectionView.selectionIndexes
             let selectedIndexPaths = collectionView.selectionIndexPaths
