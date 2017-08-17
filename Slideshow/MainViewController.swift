@@ -138,7 +138,10 @@ class MainViewController: NSViewController {
     // note - even with allowsMultipleSelection set to false
     // it appears programmatic selection allows multiple - so forcing the issue
     func selectAndScrollToThumb(_ index: Int) {
-        guard let thumbsVC = getThumbsVC() else { return }
+        guard let thumbsVC = getThumbsVC() else {
+            print("can't get thumbs view controller")
+            return
+        }
         if let collectionView = thumbsVC.collectionView {
 
             var selectedIndexPaths = collectionView.selectionIndexPaths
@@ -156,8 +159,10 @@ class MainViewController: NSViewController {
 
     // wrap display() to sync thumbs collectionview
     func displayCurrent() {
-        selectAndScrollToThumb(imagesManager.currentIndex)
         display(url: imagesManager.currentFile)
+        DispatchQueue.main.async {
+            self.selectAndScrollToThumb(self.imagesManager.currentIndex)
+        }
     }
 
     func initImages() {
