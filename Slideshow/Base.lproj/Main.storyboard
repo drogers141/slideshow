@@ -762,14 +762,14 @@
             <objects>
                 <viewController id="u9H-pr-TaD" customClass="MainViewController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1B5-Yk-zQx">
-                        <rect key="frame" x="0.0" y="0.0" width="975" height="645"/>
+                        <rect key="frame" x="0.0" y="0.0" width="975" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-9h-4w1" userLabel="Main Stack View">
-                                <rect key="frame" x="0.0" y="0.0" width="975" height="645"/>
+                                <rect key="frame" x="0.0" y="0.0" width="975" height="667"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="260" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-Oh-dqu" userLabel="Header Stack View">
-                                        <rect key="frame" x="20" y="595" width="935" height="50"/>
+                                        <rect key="frame" x="20" y="617" width="935" height="50"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
                                                 <rect key="frame" x="0.0" y="16.5" width="747" height="17"/>
@@ -855,8 +855,8 @@
                                         </customSpacing>
                                     </stackView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-MK-0FO">
-                                        <rect key="frame" x="5" y="81" width="965" height="509"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" imageFrameStyle="photo" image="benderama" id="NSC-Fd-D0n"/>
+                                        <rect key="frame" x="5" y="81" width="965" height="531"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
                                         <rect key="frame" x="305.5" y="0.0" width="364" height="76"/>
@@ -1061,7 +1061,7 @@
                 </viewController>
                 <customObject id="N6j-hd-6W8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="876"/>
+            <point key="canvasLocation" x="645" y="697"/>
         </scene>
     </scenes>
     <resources>

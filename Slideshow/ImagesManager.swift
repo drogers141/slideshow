@@ -28,6 +28,10 @@ class ImagesManager {
     // make sure implementation handles uppercase as well
     static let imageFileExts = [".jpg", ".png", ".gif"]
 
+    // TODO - configure copying and trash more, but still minimal
+    var copyDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-copy")
+    var trashDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-trash")
+
     // initialize the manager with either a directory list or a files list
     // this can't be done in the constructor due to vagaries of swift
 
@@ -85,6 +89,26 @@ class ImagesManager {
             }
         }
         return ret
+    }
+
+    func copyCurrent() throws {
+        let fileManager = FileManager.default
+//        try fileManager.createDirectory(atPath: copyDir, withIntermediateDirectories: true, attributes: nil)
+//        dest = copyDir + "/" + currentFile.lastPathComponent
+//        try fileManager.copyItem(atPath: currentFile.path, toPath: copyDir)
+        try fileManager.createDirectory(at: copyDir, withIntermediateDirectories: true, attributes: nil)
+        var dest = copyDir
+        dest.appendPathComponent(currentFile.lastPathComponent)
+        try fileManager.copyItem(at: currentFile, to: dest)
+    }
+
+    func removeCurrent() throws {
+        let fileManager = FileManager.default
+        try fileManager.createDirectory(at: trashDir, withIntermediateDirectories: true, attributes: nil)
+        var dest = trashDir
+        dest.appendPathComponent(currentFile.lastPathComponent)
+        try fileManager.moveItem(at: currentFile, to: dest)
+        currentFiles.remove(at: currentIndex)
     }
 }
 

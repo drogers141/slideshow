@@ -10,10 +10,17 @@ import Cocoa
 
 class CollectionViewItem: NSCollectionViewItem {
 
-    let regularBackgroundColor = NSColor.darkGray.cgColor
+    // muted dark gray w blue
+    // NSColor(red: 0.07, green: 0.09, blue: 0.16, alpha: 1.0).cgColor
+    // lightish green
+    // NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
+    // NSColor.darkGray.cgColor
+    let regularBackgroundColor = NSColor.gray.cgColor
+    // NSColor.lightGray.cgColor  rgb(72%, 85%, 41%)
     let gifBackgroundColor = NSColor.lightGray.cgColor
     // only shown when selected
-    let borderColor = NSColor.white.cgColor
+    // NSColor.white.cgColor
+    let borderColor = NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
 
     var imageFile: ThumbImageFile? {
         didSet {

@@ -20,8 +20,10 @@ class MainViewController: NSViewController {
     }
 
     @IBAction func copyBtnClicked(_ sender: NSButton) {
+        copyCurrent()
     }
     @IBAction func deleteBtnClicked(_ sender: NSButton) {
+        removeCurrent()
     }
 
     @IBOutlet var delayTextField: NSTextField!
@@ -65,6 +67,8 @@ class MainViewController: NSViewController {
         pageBackward()
     }
 
+    // ************************************************************//
+
     // OTHER CONFIG - TODO: use userdefaults
 
     // default: NSColor.windowBackgroundColor.cgColor
@@ -72,8 +76,13 @@ class MainViewController: NSViewController {
     // e.g. NSColor.black.cgColor
     let backgroundColor = NSColor.windowBackgroundColor.cgColor
     // not working
-    let imageBackgroundColor = NSColor.black
+    let imageBackgroundColor = NSColor.black.cgColor
+    let imageBorderWidth = CGFloat(5.0)
+//    let imageBorderRadius = CGFloat(8.0)
 
+    // rgb(73%, 80%, 81%) - cool gray
+    // rgb(71%, 46%, 68%) - purple
+    let imageBorderColor = NSColor(red: 0.71, green: 0.46, blue: 0.68, alpha: 1.0).cgColor
 
     // note the need for an implicitly unwrapped optional to avoid null-checking, etc
     // everywhere this member is used
@@ -84,25 +93,26 @@ class MainViewController: NSViewController {
 
     func next() {
         imagesManager.incrementIndex(1)
-        display(url: imagesManager.currentFile)
+//        display(url: imagesManager.currentFile)
+        displayCurrent()
     }
     func previous() {
         imagesManager.incrementIndex(-1)
-        display(url: imagesManager.currentFile)
+        displayCurrent()
     }
     func pageForward() {
         imagesManager.incrementIndex(10)
-        display(url: imagesManager.currentFile)
+        displayCurrent()
     }
     func pageBackward() {
         imagesManager.incrementIndex(-10)
-        display(url: imagesManager.currentFile)
+        displayCurrent()
     }
     func goto(_ index: Int) {
         guard imagesManager.currentIndex != index && index < imagesManager.currentFiles.count
             && index >= 0 else { return }
         imagesManager.currentIndex = index
-        display(url: imagesManager.currentFile)
+        displayCurrent()
     }
 
     func display(url: URL) {
@@ -118,6 +128,36 @@ class MainViewController: NSViewController {
             imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
             imageFileName.title = imagesManager.currentFile.path
         }
+    }
+
+    func getThumbsVC() -> ThumbsViewController? {
+        guard let splitVC = parent as? TopViewController else { return nil}
+        return splitVC.childViewControllers[0] as? ThumbsViewController
+    }
+
+    // note - even with allowsMultipleSelection set to false
+    // it appears programmatic selection allows multiple - so forcing the issue
+    func selectAndScrollToThumb(_ index: Int) {
+        guard let thumbsVC = getThumbsVC() else { return }
+        if let collectionView = thumbsVC.collectionView {
+
+            var selectedIndexPaths = collectionView.selectionIndexPaths
+            print("before: selectedIndexPaths: \(selectedIndexPaths)")
+
+            collectionView.deselectAll(nil)
+
+            let selected: Set = [IndexPath(item: index, section: 0)]
+            collectionView.selectItems(at: selected, scrollPosition: NSCollectionViewScrollPosition.centeredVertically)
+
+            selectedIndexPaths = collectionView.selectionIndexPaths
+            print("after: selectedIndexPaths: \(selectedIndexPaths)")
+        }
+    }
+
+    // wrap display() to sync thumbs collectionview
+    func displayCurrent() {
+        selectAndScrollToThumb(imagesManager.currentIndex)
+        display(url: imagesManager.currentFile)
     }
 
     func initImages() {
@@ -138,7 +178,7 @@ class MainViewController: NSViewController {
     }
 
     func startGUI() {
-        display(url: imagesManager.currentFile)
+        displayCurrent()
         imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
         imageFileName.title = imagesManager.currentFile.path
         delayTextField.stringValue = "\(autoplayDelay)"
@@ -161,8 +201,12 @@ class MainViewController: NSViewController {
         view.wantsLayer = true
         view.layer?.backgroundColor = backgroundColor
 
-//        mainImage.wantsLayer = true
-//        mainImage.layer?.backgroundColor = imageBackgroundColor.cgColor
+        mainImage.wantsLayer = true
+        mainImage.layer?.backgroundColor = imageBackgroundColor
+        mainImage.layer?.masksToBounds = true
+        mainImage.layer?.borderWidth = imageBorderWidth
+        mainImage.layer?.borderColor = imageBorderColor
+        mainImage.layer?.borderWidth = imageBorderWidth
 
         initImages()
         print("currentFiles: \(imagesManager.currentFiles.count)")
@@ -217,6 +261,29 @@ class MainViewController: NSViewController {
                                  userInfo: nil, repeats: false)
         } else {
             print("autoplay off")
+        }
+    }
+
+    func copyCurrent() {
+        do {
+            try imagesManager.copyCurrent()
+        }
+        catch let error as NSError {
+            print("copyCurrent error:\nerror: \(error)\nerror domain: \(error.domain)")
+        }
+    }
+
+    func removeCurrent() {
+        do {
+            try imagesManager.removeCurrent()
+            if let thumbsVC = getThumbsVC() {
+                thumbsVC.collectionView.deselectAll(nil)
+                thumbsVC.collectionView.deleteItems(at: thumbsVC.collectionView.selectionIndexPaths)
+                thumbsVC.collectionView.reloadData()
+            }
+        }
+        catch let error as NSError {
+            print("copyCurrent error:\nerror: \(error)\nerror domain: \(error.domain)")
         }
     }
 }

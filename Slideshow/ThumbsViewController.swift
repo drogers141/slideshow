@@ -42,6 +42,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
         view.wantsLayer = true
         collectionView.layer?.backgroundColor = backgroundColor
+        collectionView.allowsMultipleSelection = false
     }
 
     override func viewDidLoad() {
@@ -82,6 +83,17 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
             print("newIndex: \(newIndex)")
             if let mainVC = getMainVC() {
                 mainVC.goto(newIndex)
+            }
+            let selectedIndexes = collectionView.selectionIndexes
+            let selectedIndexPaths = collectionView.selectionIndexPaths
+            print("selectedIndexes: \(selectedIndexes)")
+            print("selectedIndexPaths: \(selectedIndexPaths)")
+            let visibleIndexPaths = collectionView.indexPathsForVisibleItems()
+            print("visibleIndexPaths: \(visibleIndexPaths)")
+            if !selectedIndexPaths.isEmpty && visibleIndexPaths.contains(selectedIndexPaths.first!) {
+                print("selectedIndexPath is in visibleIndexPaths")
+            } else {
+                print("selectedIndexPath is not in visibleIndexPaths")
             }
         }
     }
