@@ -51,13 +51,17 @@ class MainViewController: NSViewController {
     @IBOutlet var autoplayButton: NSButton!
 
     @IBAction func autoplayBtnClicked(_ sender: NSButton) {
+        handleAutoplayAction()
+    }
+
+    func handleAutoplayAction() {
         if autoplay == true {
             print("autoplay off")
-            sender.title = "Autoplay"
+            autoplayButton.title = "Autoplay"
             autoplay = false
         } else {
             print("autoplay on")
-            sender.title = "Stop"
+            autoplayButton.title = "Stop"
             autoplay = true
             doAutoplay()
         }
@@ -102,21 +106,27 @@ class MainViewController: NSViewController {
 
     var autoplay = false
     var autoplayDelay = 4.0
+    // direction for autoplay = "forward" or "backward" - previous() or pageBackward() set to "backward"
+    var direction = "forward"
 
     func next() {
+        direction = "forward"
         imagesManager.incrementIndex(1)
 //        display(url: imagesManager.currentFile)
         displayCurrent()
     }
     func previous() {
+        direction = "backward"
         imagesManager.incrementIndex(-1)
         displayCurrent()
     }
     func pageForward() {
+        direction = "forward"
         imagesManager.incrementIndex(10)
         displayCurrent()
     }
     func pageBackward() {
+        direction = "backward"
         imagesManager.incrementIndex(-10)
         displayCurrent()
     }
@@ -241,28 +251,58 @@ class MainViewController: NSViewController {
     }
 
     override func keyDown(with event: NSEvent) {
-        switch Int(event.keyCode) {
-        case 123:
-//            print("left arrow")
-            previous()
+        let arrowKeys: Set = [123, 124, 125, 126]
+        let charKeys: Set = ["d", "D", "c", "g", "t", "k", " "]
 
-        case 124:
-//            print("right arrow")
-            next()
+        if arrowKeys.contains(Int(event.keyCode)) {
+            switch Int(event.keyCode) {
+            case 123:
+    //            print("left arrow")
+                previous()
 
-        case 125:
-//            print("down arrow")
-            pageBackward()
+            case 124:
+    //            print("right arrow")
+                next()
 
-        case 126:
-//            print("up arrow")
-            pageForward()
+            case 125:
+    //            print("down arrow")
+                pageBackward()
 
-        default:
-            if Int(event.keyCode) != 53 {
-                // 53 is ESC - handled by window controller as cancel()
-                print("another key: \(event.keyCode)")
+            case 126:
+    //            print("up arrow")
+                pageForward()
+
+            default:
+                break
             }
+        } else if charKeys.contains(event.characters!) {
+            switch event.characters! {
+            case "d":
+                print("got d")
+            case "D":
+                print("got D")
+                DispatchQueue.main.async {
+                    self.mainImage.window?.makeFirstResponder(self.delayTextField)
+                }
+            case "c":
+                print("got c")
+            case "g":
+                print("got g")
+                DispatchQueue.main.async {
+                    self.mainImage.window?.makeFirstResponder(self.gotoTextField)
+                }
+            case "t":
+                print("got t")
+            case "k":
+                print("got k")
+            case " ":
+                print("got space")
+                handleAutoplayAction()
+
+            default:
+                break
+            }
+        } else {
             super.keyDown(with: event)
         }
     }
