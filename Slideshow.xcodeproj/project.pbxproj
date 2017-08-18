@@ -21,7 +21,19 @@
 		FC41A6FD1F40240000E7BE7F /* CollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6FB1F40240000E7BE7F /* CollectionViewItem.swift */; };
 		FC41A6FE1F40240000E7BE7F /* CollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC41A6FC1F40240000E7BE7F /* CollectionViewItem.xib */; };
 		FC41A7001F402E1800E7BE7F /* ThumbImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6FF1F402E1800E7BE7F /* ThumbImageFile.swift */; };
+		FC41A7251F479CC600E7BE7F /* SlideshowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A7241F479CC600E7BE7F /* SlideshowTests.swift */; };
+		FC41A72D1F479F0500E7BE7F /* Glob.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A72C1F479F0500E7BE7F /* Glob.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC41A7271F479CC600E7BE7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC41A6B21F39C15B00E7BE7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC41A6B91F39C15B00E7BE7F;
+			remoteInfo = Slideshow;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FC41A6BA1F39C15B00E7BE7F /* Slideshow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slideshow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,10 +52,21 @@
 		FC41A6FB1F40240000E7BE7F /* CollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewItem.swift; sourceTree = "<group>"; };
 		FC41A6FC1F40240000E7BE7F /* CollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewItem.xib; sourceTree = "<group>"; };
 		FC41A6FF1F402E1800E7BE7F /* ThumbImageFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbImageFile.swift; sourceTree = "<group>"; };
+		FC41A7221F479CC600E7BE7F /* SlideshowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideshowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC41A7241F479CC600E7BE7F /* SlideshowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowTests.swift; sourceTree = "<group>"; };
+		FC41A7261F479CC600E7BE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC41A72C1F479F0500E7BE7F /* Glob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		FC41A6B71F39C15B00E7BE7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC41A71F1F479CC600E7BE7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				FC41A6BC1F39C15B00E7BE7F /* Slideshow */,
+				FC41A7231F479CC600E7BE7F /* SlideshowTests */,
 				FC41A6BB1F39C15B00E7BE7F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				FC41A6BA1F39C15B00E7BE7F /* Slideshow.app */,
+				FC41A7221F479CC600E7BE7F /* SlideshowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +101,7 @@
 				FC41A6F91F400E5E00E7BE7F /* WindowController.swift */,
 				FC41A6E71F3B113D00E7BE7F /* TopViewController.swift */,
 				FC41A6ED1F3B149500E7BE7F /* MainViewController.swift */,
+				FC41A72C1F479F0500E7BE7F /* Glob.swift */,
 				FC41A6EB1F3B145A00E7BE7F /* ThumbsViewController.swift */,
 				FC41A6FB1F40240000E7BE7F /* CollectionViewItem.swift */,
 				FC41A6C11F39C15B00E7BE7F /* Assets.xcassets */,
@@ -89,6 +115,15 @@
 				FC41A6F61F3C6EDC00E7BE7F /* benderama.png */,
 			);
 			path = Slideshow;
+			sourceTree = "<group>";
+		};
+		FC41A7231F479CC600E7BE7F /* SlideshowTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC41A7241F479CC600E7BE7F /* SlideshowTests.swift */,
+				FC41A7261F479CC600E7BE7F /* Info.plist */,
+			);
+			path = SlideshowTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +146,24 @@
 			productReference = FC41A6BA1F39C15B00E7BE7F /* Slideshow.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FC41A7211F479CC600E7BE7F /* SlideshowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC41A72B1F479CC600E7BE7F /* Build configuration list for PBXNativeTarget "SlideshowTests" */;
+			buildPhases = (
+				FC41A71E1F479CC600E7BE7F /* Sources */,
+				FC41A71F1F479CC600E7BE7F /* Frameworks */,
+				FC41A7201F479CC600E7BE7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC41A7281F479CC600E7BE7F /* PBXTargetDependency */,
+			);
+			name = SlideshowTests;
+			productName = SlideshowTests;
+			productReference = FC41A7221F479CC600E7BE7F /* SlideshowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -125,6 +178,12 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 2R577Z8998;
 						ProvisioningStyle = Automatic;
+					};
+					FC41A7211F479CC600E7BE7F = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 2R577Z8998;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FC41A6B91F39C15B00E7BE7F;
 					};
 				};
 			};
@@ -142,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				FC41A6B91F39C15B00E7BE7F /* Slideshow */,
+				FC41A7211F479CC600E7BE7F /* SlideshowTests */,
 			);
 		};
 /* End PBXProject section */
@@ -158,6 +218,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC41A7201F479CC600E7BE7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -167,6 +234,7 @@
 			files = (
 				FC41A6E81F3B113D00E7BE7F /* TopViewController.swift in Sources */,
 				FC41A6BE1F39C15B00E7BE7F /* AppDelegate.swift in Sources */,
+				FC41A72D1F479F0500E7BE7F /* Glob.swift in Sources */,
 				FC41A6FD1F40240000E7BE7F /* CollectionViewItem.swift in Sources */,
 				FC41A6EC1F3B145A00E7BE7F /* ThumbsViewController.swift in Sources */,
 				FC41A6F21F3B1BCF00E7BE7F /* ImagesManager.swift in Sources */,
@@ -178,7 +246,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC41A71E1F479CC600E7BE7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC41A7251F479CC600E7BE7F /* SlideshowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC41A7281F479CC600E7BE7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC41A6B91F39C15B00E7BE7F /* Slideshow */;
+			targetProxy = FC41A7271F479CC600E7BE7F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FC41A6C31F39C15B00E7BE7F /* Main.storyboard */ = {
@@ -312,6 +396,36 @@
 			};
 			name = Release;
 		};
+		FC41A7291F479CC600E7BE7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2R577Z8998;
+				INFOPLIST_FILE = SlideshowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = us.drogers.SlideshowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slideshow.app/Contents/MacOS/Slideshow";
+			};
+			name = Debug;
+		};
+		FC41A72A1F479CC600E7BE7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2R577Z8998;
+				INFOPLIST_FILE = SlideshowTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = us.drogers.SlideshowTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slideshow.app/Contents/MacOS/Slideshow";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -332,6 +446,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FC41A72B1F479CC600E7BE7F /* Build configuration list for PBXNativeTarget "SlideshowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC41A7291F479CC600E7BE7F /* Debug */,
+				FC41A72A1F479CC600E7BE7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

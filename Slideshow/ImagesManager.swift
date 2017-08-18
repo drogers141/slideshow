@@ -110,5 +110,19 @@ class ImagesManager {
         try fileManager.moveItem(at: currentFile, to: dest)
         currentFiles.remove(at: currentIndex)
     }
+
+    // returns index of first matching file or -1
+    func searchForFile(_ glob: String) -> Int {
+        var retVal = -1
+        for (i, f) in currentFiles.enumerated() {
+            let target = f.lastPathComponent
+            if Glob.match(glob, target) {
+                retVal = i
+                break
+            }
+        }
+        return retVal
+    }
+
 }
 
