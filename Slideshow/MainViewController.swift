@@ -16,18 +16,24 @@ class MainViewController: NSViewController {
     @IBOutlet weak var mainImage: NSImageView!
 
     @IBOutlet var gotoTextField: NSTextField!
-    @IBAction func gotoTextChanged(_ sender: NSTextField) {
+    @IBAction func gotoTextSent(_ sender: NSTextField) {
         let text = gotoTextField.stringValue.trimmingCharacters(in: .whitespaces)
+        guard text != "" else { return }
+        print("goto text=\(text)")
         let val = Int(text)
+//        print("val=\(String(describing: val))")
         if val != nil {
+//            print("going to index")
             gotoIndex(val!)
         } else {
+//            print("going to glob")
             gotoGlob(text)
         }
         DispatchQueue.main.async {
             self.gotoTextField.stringValue = ""
             self.gotoTextField.window?.makeFirstResponder(self)
         }
+
     }
 
     @IBAction func copyBtnClicked(_ sender: NSButton) {
@@ -39,10 +45,13 @@ class MainViewController: NSViewController {
 
     @IBOutlet var delayTextField: NSTextField!
 
-    @IBAction func delayTextFieldChanged(_ sender: NSTextField) {
+    @IBAction func delayTextFieldSent(_ sender: NSTextField) {
         let text = delayTextField.stringValue.trimmingCharacters(in: .whitespaces)
-        autoplayDelay = Double(text)!
-        print("autoplayDelay = \(autoplayDelay)")
+        guard text != "" else { return }
+        if let delay = Double(text) {
+            print("set autoplayDelay = \(autoplayDelay)")
+            autoplayDelay = delay
+        }
         DispatchQueue.main.async {
             self.delayTextField.window?.makeFirstResponder(self)
         }
@@ -135,11 +144,17 @@ class MainViewController: NSViewController {
     func gotoIndex(_ index: Int) {
         guard imagesManager.currentIndex != index && index < imagesManager.currentFiles.count
             && index >= 0 else { return }
+        print("goto index")
         imagesManager.currentIndex = index
         displayCurrent()
     }
     func gotoGlob(_ glob: String) {
-        print("*** implement goto glob ***")
+        print("goto glob")
+        let index = imagesManager.searchForFile(glob)
+        if index != -1 {
+            imagesManager.currentIndex = index
+            displayCurrent()
+        }
     }
 
     func display(url: URL) {
@@ -279,11 +294,12 @@ class MainViewController: NSViewController {
             switch event.characters! {
             case "d":
                 print("got d")
-            case "D":
-                print("got D")
                 DispatchQueue.main.async {
                     self.mainImage.window?.makeFirstResponder(self.delayTextField)
                 }
+            case "D":
+                print("got D")
+                print("deleting current")
             case "c":
                 print("got c")
             case "g":

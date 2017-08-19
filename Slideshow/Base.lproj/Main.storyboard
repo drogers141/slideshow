@@ -772,7 +772,7 @@
                                         <rect key="frame" x="20" y="617" width="935" height="50"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
-                                                <rect key="frame" x="0.0" y="17" width="747" height="17"/>
+                                                <rect key="frame" x="0.0" y="16.5" width="747" height="17"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="300" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-C9-MNY" userLabel="Image Index Label">
                                                         <rect key="frame" x="-2" y="0.0" width="84" height="17"/>
@@ -807,7 +807,7 @@
                                                 <rect key="frame" x="755" y="14" width="180" height="22"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-0F-Tdx">
-                                                        <rect key="frame" x="-2" y="3" width="44" height="17"/>
+                                                        <rect key="frame" x="-2" y="2.5" width="44" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="xRO-Mu-4CP"/>
                                                         </constraints>
@@ -828,7 +828,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <action selector="gotoTextChanged:" target="u9H-pr-TaD" id="DFt-hM-yZf"/>
+                                                            <action selector="gotoTextSent:" target="u9H-pr-TaD" id="aNZ-di-B9u"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -859,7 +859,7 @@
                                         <imageCell key="cell" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
-                                        <rect key="frame" x="306" y="0.0" width="364" height="76"/>
+                                        <rect key="frame" x="305.5" y="0.0" width="364" height="76"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j82-TH-bci">
                                                 <rect key="frame" x="0.0" y="13" width="68" height="50"/>
@@ -895,7 +895,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-JP-Shs">
-                                                <rect key="frame" x="76" y="28" width="188" height="21"/>
+                                                <rect key="frame" x="76" y="27.5" width="188" height="21"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XLf-Fg-wTG">
                                                         <rect key="frame" x="-6" y="-7" width="57" height="32"/>
@@ -952,7 +952,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZnZ-5l-ftG">
-                                                <rect key="frame" x="272" y="13" width="92" height="51"/>
+                                                <rect key="frame" x="272" y="12.5" width="92" height="51"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbd-0S-3Ml">
                                                         <rect key="frame" x="-6" y="23" width="93" height="32"/>
@@ -986,7 +986,7 @@
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
-                                                                    <action selector="delayTextFieldChanged:" target="u9H-pr-TaD" id="HrK-JX-cMO"/>
+                                                                    <action selector="delayTextFieldSent:" target="u9H-pr-TaD" id="dqf-Vj-tYZ"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
