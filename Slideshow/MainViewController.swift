@@ -335,7 +335,11 @@ class MainViewController: NSViewController {
         print("doAutoplay")
 //        autoplayDelay = Double(delayTextField.stringValue)!
         if autoplay == true {
-            next()
+            if direction == "forward" {
+                next()
+            } else {
+                previous()
+            }
             var delay = autoplayDelay
             // handle gif timing
             let url = imagesManager.currentFile
