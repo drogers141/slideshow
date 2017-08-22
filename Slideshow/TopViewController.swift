@@ -25,8 +25,7 @@ class TopViewController: NSSplitViewController {
 
     override func viewDidLayout() {
         let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
-//        print("splitview x constraints:\n\(xAxisConstraints)")
-        printConstraints("topview x constraints:", xAxisConstraints)
+//        printConstraints("topview x constraints:", xAxisConstraints)
     }
 
 }

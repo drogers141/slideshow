@@ -226,6 +226,7 @@ class MainViewController: NSViewController {
 
     func startGUI() {
         displayCurrent()
+        imageIndexLabel.lineBreakMode = NSLineBreakMode.byTruncatingHead
         imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
         imageFileName.title = imagesManager.currentFile.path
         delayTextField.stringValue = "\(autoplayDelay)"
@@ -263,8 +264,7 @@ class MainViewController: NSViewController {
 
     override func viewDidLayout() {
         let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
-//        print("mainview x constraints:\n\(xAxisConstraints)")
-        printConstraints("mainview x constraints:", xAxisConstraints)
+//        printConstraints("mainview x constraints:", xAxisConstraints)
     }
 
 
