@@ -18,6 +18,8 @@ func printConstraints(_ msg: String, _ constraints: [NSLayoutConstraint]) {
 
 class TopViewController: NSSplitViewController {
 
+    var savedDividerPos = 0.0
+
     let thumbSize = NSSize(width: 120.0, height: 120.0)
 
     func getThumbsWidth(_ numCols: Int) -> Float {
@@ -47,8 +49,8 @@ class TopViewController: NSSplitViewController {
         splitView.setPosition(CGFloat(divPos), ofDividerAt: 0)
     }
     override func viewDidLayout() {
-//        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
-//        printConstraints("topview x constraints:", xAxisConstraints)
+        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
+        printConstraints("topview x constraints:", xAxisConstraints)
     }
 
     func toggleThumbsView() {
@@ -63,9 +65,13 @@ class TopViewController: NSSplitViewController {
 
     func collapseThumbsView() {
         if let thumbsView = splitViewItem(for: childViewControllers[0]) {
+            savedDividerPos = Double(thumbsView.viewController.view.frame.width)
+            print("collapsed thumbview - saved divider at: \(savedDividerPos)")
             thumbsView.canCollapse = true
             thumbsView.isCollapsed = true
-            splitView.setPosition(0.0, ofDividerAt: 0)
+//            thumbsView.minimumThickness = 0.0
+//            splitView.setPosition(0.0, ofDividerAt: 0)
+//            splitView.adjustSubviews()
         }
     }
 
@@ -74,6 +80,7 @@ class TopViewController: NSSplitViewController {
             if thumbsView.isCollapsed {
                 thumbsView.isCollapsed = false
             }
+            splitView.setPosition(CGFloat(savedDividerPos), ofDividerAt: 0)
             //            splitView.adjustSubviews()
         }
     }
