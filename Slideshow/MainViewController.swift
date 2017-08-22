@@ -316,6 +316,9 @@ class MainViewController: NSViewController {
                 }
             case "t":
                 print("got t")
+                guard let splitVC = parent as? TopViewController else { return }
+                splitVC.toggleThumbsView()
+
             case "k":
                 print("got k")
             case " ":

@@ -50,23 +50,34 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
         configureCollectionView()
     }
 
-    override func viewWillAppear() {
+    func getDesiredWidth(_ numCols: Int) -> Float {
         // 302 == 2 cols (301.5 shifts to one)
-        let numThumbCols = 2
+//        let numThumbCols = 2
         // sectionInset - left and right
         let margins = CGFloat(20.0 + 20.0)
         // layout.minimumInteritemSpacing
         let interSpace = CGFloat(20.0)
-        let w = CGFloat(numThumbCols) * (interSpace + thumbSize.width) + interSpace + margins
-        print("thumbsview: setting width = \(w)")
-        view.setFrameSize(NSSize(width: w, height: view.frame.height))
+        let w = CGFloat(numCols) * (interSpace + thumbSize.width) + interSpace + margins
+        return Float(w)
+    }
+
+    override func viewWillAppear() {
+//        // 302 == 2 cols (301.5 shifts to one)
+//        let numThumbCols = 2
+//        // sectionInset - left and right
+//        let margins = CGFloat(20.0 + 20.0)
+//        // layout.minimumInteritemSpacing
+//        let interSpace = CGFloat(20.0)
+//        let w = CGFloat(numThumbCols) * (interSpace + thumbSize.width) + interSpace + margins
+//        print("thumbsview: setting width = \(w)")
+//        view.setFrameSize(NSSize(width: w, height: view.frame.height))
     }
 
 
     override func viewDidLayout() {
-        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
+//        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("thumbview x constraints:", xAxisConstraints)
-        print("thumbsview: frame width = \(view.frame.size)")
+//        print("thumbsview: frame width = \(view.frame.size)")
     }
 
 
