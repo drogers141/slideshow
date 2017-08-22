@@ -261,6 +261,13 @@ class MainViewController: NSViewController {
         startGUI()
     }
 
+    override func viewDidLayout() {
+        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
+//        print("mainview x constraints:\n\(xAxisConstraints)")
+        printConstraints("mainview x constraints:", xAxisConstraints)
+    }
+
+
     override var acceptsFirstResponder: Bool {
         return true
     }

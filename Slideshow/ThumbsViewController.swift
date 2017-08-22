@@ -48,7 +48,20 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        let numThumbCols = 5
+        let margins = 20 + 20
+        let w = CGFloat(numThumbCols) * (20 + thumbSize.width)
+        print("thumbsview: setting width = \(w)")
+        view.setFrameSize(NSSize(width: w, height: view.frame.height))
     }
+
+    override func viewDidLayout() {
+        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
+//        print("thumbsview x constraints:\n\(xAxisConstraints)")
+        printConstraints("thumbview x constraints:", xAxisConstraints)
+        print("thumbview: frame width = \(view.frame.size)")
+    }
+
 
     // NSCollectionViewDataSource protocol
 
