@@ -15,8 +15,19 @@ class WindowController: NSWindowController, NSWindowDelegate {
 
         // set window frame to size custom by screen, on right edge
         if let window = window, let screen = NSScreen.main() {
+            let config = ConfigManager.manager
+            if let winConfig = config.getWinConfig() {
+                let key = winConfig.key
+                let win = winConfig.window
+                print("winConfig: key: \(key) win: \(win)")
+                if win == [0.0, 0.0, 0.0, 0.0] {
+                    print("no window stored for this screen")
+                }
+            }
             let screenRect = screen.visibleFrame
             print("screen.visibleFrame: \(screenRect)")
+//            let frame = screen.frame
+            print("screen.frame: \(screen.frame)")
             // desktop
             let y = screenRect.origin.y
             let h = screenRect.height
@@ -28,6 +39,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
             }
             let x = screenRect.width - w
             window.setFrame(NSRect(x: x, y: y, width: w, height: h), display: true)
+            
         }
     }
 
@@ -35,7 +47,19 @@ class WindowController: NSWindowController, NSWindowDelegate {
 //        NSLog("windowWillClose notification: \(notification)")
         if let window = window {
             let frame = window.frame
-            NSLog("windowWillClose frame: \(frame)")
+            NSLog("\(#function) frame: \(frame)")
+            
+            let (x, y) = (Double(frame.minX), Double(frame.minY))
+            let (w, h) = (Double(frame.width), Double(frame.height))
+            let config = ConfigManager.manager
+            if let winConfig = config.getWinConfig() {
+                let key = winConfig.key
+                let win = winConfig.window
+                print("window will close: winConfig: key: \(key) win: \(win)")
+            } else {
+                print("did not get winConfig")
+//                config.storeWinGeo(frame: [x, y, w, h])
+            }
         }
     }
 

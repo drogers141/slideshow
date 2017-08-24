@@ -263,7 +263,7 @@ class MainViewController: NSViewController {
     }
 
     override func viewDidLayout() {
-        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
+//        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("mainview x constraints:", xAxisConstraints)
     }
 
@@ -307,8 +307,12 @@ class MainViewController: NSViewController {
             case "D":
                 print("got D")
                 print("deleting current")
+                removeCurrent()
+                
             case "c":
-                print("got c")
+                print("copying \(imagesManager.currentFile.path)")
+                copyCurrent()
+                
             case "g":
                 print("got g")
                 DispatchQueue.main.async {

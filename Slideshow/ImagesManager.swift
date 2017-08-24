@@ -99,7 +99,11 @@ class ImagesManager {
         try fileManager.createDirectory(at: copyDir, withIntermediateDirectories: true, attributes: nil)
         var dest = copyDir
         dest.appendPathComponent(currentFile.lastPathComponent)
-        try fileManager.copyItem(at: currentFile, to: dest)
+        if !fileManager.fileExists(atPath: dest.path) {
+            try fileManager.copyItem(at: currentFile, to: dest)
+        } else {
+            print("file exists: \(dest.path)")
+        }
     }
 
     func removeCurrent() throws {
@@ -107,7 +111,9 @@ class ImagesManager {
         try fileManager.createDirectory(at: trashDir, withIntermediateDirectories: true, attributes: nil)
         var dest = trashDir
         dest.appendPathComponent(currentFile.lastPathComponent)
-        try fileManager.moveItem(at: currentFile, to: dest)
+        if !fileManager.fileExists(atPath: dest.path) {
+            try fileManager.moveItem(at: currentFile, to: dest)
+        }
         currentFiles.remove(at: currentIndex)
     }
 

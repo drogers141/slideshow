@@ -23,6 +23,7 @@
 		FC41A7001F402E1800E7BE7F /* ThumbImageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A6FF1F402E1800E7BE7F /* ThumbImageFile.swift */; };
 		FC41A7251F479CC600E7BE7F /* SlideshowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A7241F479CC600E7BE7F /* SlideshowTests.swift */; };
 		FC41A72D1F479F0500E7BE7F /* Glob.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A72C1F479F0500E7BE7F /* Glob.swift */; };
+		FC41A72F1F4D3A2600E7BE7F /* ConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC41A72E1F4D3A2600E7BE7F /* ConfigManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		FC41A7241F479CC600E7BE7F /* SlideshowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideshowTests.swift; sourceTree = "<group>"; };
 		FC41A7261F479CC600E7BE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC41A72C1F479F0500E7BE7F /* Glob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glob.swift; sourceTree = "<group>"; };
+		FC41A72E1F4D3A2600E7BE7F /* ConfigManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				FC41A6F31F3B26E100E7BE7F /* CLI.swift */,
 				FC41A6C61F39C15B00E7BE7F /* Info.plist */,
 				FC41A6F61F3C6EDC00E7BE7F /* benderama.png */,
+				FC41A72E1F4D3A2600E7BE7F /* ConfigManager.swift */,
 			);
 			path = Slideshow;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				FC41A6F41F3B26E100E7BE7F /* CLI.swift in Sources */,
 				FC41A7001F402E1800E7BE7F /* ThumbImageFile.swift in Sources */,
 				FC41A6F01F3B176D00E7BE7F /* Gif.swift in Sources */,
+				FC41A72F1F4D3A2600E7BE7F /* ConfigManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,9 +458,9 @@
 				FC41A72A1F479CC600E7BE7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
 	rootObject = FC41A6B21F39C15B00E7BE7F /* Project object */;
 }
-

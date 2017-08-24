@@ -73,6 +73,10 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 //        view.setFrameSize(NSSize(width: w, height: view.frame.height))
     }
 
+    override func viewWillDisappear() {
+        NSLog("thumbsview controller will disappear")
+        NSLog("thumbsview: frame width = \(view.frame.size)")
+    }
 
     override func viewDidLayout() {
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
