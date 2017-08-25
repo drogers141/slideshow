@@ -2,6 +2,10 @@
 //  Glob.swift
 //  Slideshow
 //
+//  The simplest of globbing supported, but good enough for our purposes:
+//  * -> 0 or more characters
+//  Case insensitive
+//
 //  Created by David Rogers on 8/18/17.
 //  Copyright © 2017 David Rogers. All rights reserved.
 //

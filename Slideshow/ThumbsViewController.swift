@@ -51,29 +51,9 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
         configureCollectionView()
     }
 
-    func getDesiredWidth(_ numCols: Int) -> Float {
-        // 302 == 2 cols (301.5 shifts to one)
-//        let numThumbCols = 2
-        // sectionInset - left and right
-        let margins = CGFloat(20.0 + 20.0)
-        // layout.minimumInteritemSpacing
-        let interSpace = CGFloat(20.0)
-        let w = CGFloat(numCols) * (interSpace + thumbSize.width) + interSpace + margins
-        return Float(w)
-    }
-
     override func viewWillAppear() {
         super.viewWillAppear()
         NSLog("thumbsview \(#function)")
-//        // 302 == 2 cols (301.5 shifts to one)
-//        let numThumbCols = 2
-//        // sectionInset - left and right
-//        let margins = CGFloat(20.0 + 20.0)
-//        // layout.minimumInteritemSpacing
-//        let interSpace = CGFloat(20.0)
-//        let w = CGFloat(numThumbCols) * (interSpace + thumbSize.width) + interSpace + margins
-//        print("thumbsview: setting width = \(w)")
-//        view.setFrameSize(NSSize(width: w, height: view.frame.height))
     }
 
     override func viewWillDisappear() {
@@ -85,16 +65,10 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
     override func viewDidLayout() {
         super.viewDidLayout()
         NSLog("thumbsview \(#function)")
-//        guard let topVC = parent as? TopViewController else {
-//            NSLog("couldn't get topview controller")
-//            return
-//        }
         let width = view.frame.width
-//        topVC.dividerPos = Double(width)
         NSLog("width: \(width)")
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("thumbview x constraints:", xAxisConstraints)
-//        print("thumbsview: frame width = \(view.frame.size)")
     }
 
 

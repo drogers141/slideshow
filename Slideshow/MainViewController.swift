@@ -21,12 +21,9 @@ class MainViewController: NSViewController {
         guard text != "" else { return }
         print("goto text=\(text)")
         let val = Int(text)
-//        print("val=\(String(describing: val))")
         if val != nil {
-//            print("going to index")
             gotoIndex(val!)
         } else {
-//            print("going to glob")
             gotoGlob(text)
         }
         DispatchQueue.main.async {
@@ -181,7 +178,7 @@ class MainViewController: NSViewController {
     // it appears programmatic selection allows multiple - so forcing the issue
     func selectAndScrollToThumb(_ index: Int) {
         guard let thumbsVC = getThumbsVC() else {
-            print("can't get thumbs view controller")
+            NSLog("\(#function): can't get thumbs view controller")
             return
         }
         if let collectionView = thumbsVC.collectionView {
@@ -243,9 +240,6 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NSLog("mainview \(#function)")
-
-//        guard let splitVC = parent as? TopViewController else { return }
-//        imagesManager = splitVC.imagesManager as ImagesManager
 
         view.wantsLayer = true
         view.layer?.backgroundColor = backgroundColor

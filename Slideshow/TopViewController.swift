@@ -21,7 +21,7 @@ class TopViewController: NSSplitViewController {
     // divider position - this is used to set the divider and store its
     // location at certain times, but thumbsview's frame width is canonical
     var dividerPos = 0.0
-    // this flag is also just a cache for thumbview's isCollapsed
+    // this flag is also just a proxy for thumbview's isCollapsed
     var thumbsCollapsed = false
 
     let thumbSize = NSSize(width: 120.0, height: 120.0)
@@ -111,12 +111,6 @@ class TopViewController: NSSplitViewController {
     override func viewDidLayout() {
         super.viewDidLayout()
         NSLog("topview \(#function)")
-//        if let thumbsView = splitViewItem(for: childViewControllers[0]) {
-//            dividerPos = Double(thumbsView.viewController.view.frame.width)
-//            NSLog("new divider pos: \(dividerPos)")
-//        } else {
-//            NSLog("couldn't get thumbsview")
-//        }
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("topview x constraints:", xAxisConstraints)
     }

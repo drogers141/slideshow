@@ -93,9 +93,6 @@ class ImagesManager {
 
     func copyCurrent() throws {
         let fileManager = FileManager.default
-//        try fileManager.createDirectory(atPath: copyDir, withIntermediateDirectories: true, attributes: nil)
-//        dest = copyDir + "/" + currentFile.lastPathComponent
-//        try fileManager.copyItem(atPath: currentFile.path, toPath: copyDir)
         try fileManager.createDirectory(at: copyDir, withIntermediateDirectories: true, attributes: nil)
         var dest = copyDir
         dest.appendPathComponent(currentFile.lastPathComponent)
