@@ -150,7 +150,8 @@ class TopViewController: NSSplitViewController {
 
     // NSSplitViewDelegate
     override func splitView(_ splitView: NSSplitView, shouldHideDividerAt dividerIndex: Int) -> Bool {
-        return true
+//        return true
+        return false
     }
 }
 
