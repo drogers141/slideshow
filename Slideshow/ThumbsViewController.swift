@@ -47,6 +47,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("thumbsview \(#function)")
         configureCollectionView()
     }
 
@@ -62,6 +63,8 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
     }
 
     override func viewWillAppear() {
+        super.viewWillAppear()
+        NSLog("thumbsview \(#function)")
 //        // 302 == 2 cols (301.5 shifts to one)
 //        let numThumbCols = 2
 //        // sectionInset - left and right
@@ -74,11 +77,21 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
     }
 
     override func viewWillDisappear() {
-        NSLog("thumbsview controller will disappear")
-        NSLog("thumbsview: frame width = \(view.frame.size)")
+        super.viewWillDisappear()
+        NSLog("thumbsview \(#function)")
+        NSLog("thumbsview: frame size = \(view.frame.size)")
     }
 
     override func viewDidLayout() {
+        super.viewDidLayout()
+        NSLog("thumbsview \(#function)")
+//        guard let topVC = parent as? TopViewController else {
+//            NSLog("couldn't get topview controller")
+//            return
+//        }
+        let width = view.frame.width
+//        topVC.dividerPos = Double(width)
+        NSLog("width: \(width)")
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("thumbview x constraints:", xAxisConstraints)
 //        print("thumbsview: frame width = \(view.frame.size)")

@@ -18,14 +18,15 @@ func printConstraints(_ msg: String, _ constraints: [NSLayoutConstraint]) {
 
 class TopViewController: NSSplitViewController {
 
-    var savedDividerPos = 0.0
+    // divider position - this is used to set the divider and store its
+    // location at certain times, but thumbsview's frame width is canonical
+    var dividerPos = 0.0
+    var thumbsCollapsed = false
 
     let thumbSize = NSSize(width: 120.0, height: 120.0)
 
-    func getThumbsWidth(_ numCols: Int) -> Float {
-        // 302 == 2 cols (301.5 shifts to one)
-        //        let numThumbCols = 2
-        // 2 cols here ends up being 305
+    func getThumbsWidth(_ numCols: Int) -> Double {
+        // 2 cols on laptop ends up being 305
         // on dell 26 screen - needs to be at 318
         // sectionInset - left and right
         let margins = CGFloat(20.0 + 20.0)
@@ -36,81 +37,80 @@ class TopViewController: NSSplitViewController {
         let w = (CGFloat(numCols) * thumbSize.width) + (CGFloat(numCols - 1) * interSpace)
             + margins + cushion
 
-        return Float(w)
+        return Double(w)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("topview \(#function)")
+
         let config = ConfigManager.manager
-        print(#function)
         if let winConfig = config.getWinConfig() {
-            let key = winConfig.key
-            let isCollapsed = winConfig.thumbsCollapsed
-            let dividerPos = winConfig.dividerPos
-            print("topview \(#function)")
-            print("winConfig: key: \(key), isCollapsed: \(isCollapsed), dividerPos: \(dividerPos)")
+            thumbsCollapsed = winConfig.thumbsCollapsed
+            dividerPos = winConfig.dividerPos
+            NSLog("loading from userdefaults thumbsCollapsed: \(thumbsCollapsed), dividerPos: \(dividerPos)")
         } else {
             print("did not get winConfig")
-            //                config.storeWinGeo(frame: [x, y, w, h])
-        }
-//        let divPos = getThumbsWidth(2) + 20
-//        print("setting divider at \(divPos)")
-//        splitView.setPosition(CGFloat(divPos), ofDividerAt: 0)
-        
-        // setting a value for a key
-        let newPerson = Person(name: "Joe", age: 10)
-        var people = [Person]()
-        people.append(newPerson)
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: people)
-        UserDefaults.standard.set(encodedData, forKey: "people")
-        
-        // retrieving a value for a key
-        if let data = UserDefaults.standard.data(forKey: "people"),
-            let myPeopleList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Person] {
-            myPeopleList.forEach({print( $0.name, $0.age)})  // Joe 10
-        } else {
-            print("There is an issue")
-        }
-        let person2 = Person(name: "Joe", age: 21)
-        let encoded = NSKeyedArchiver.archivedData(withRootObject: person2)
-        UserDefaults.standard.set(encoded, forKey: "person2")
-        
-        if let data2 = UserDefaults.standard.data(forKey: "person2"),
-            let p2 = NSKeyedUnarchiver.unarchiveObject(with: data2) as? Person {
-            print("p2: \(p2.name), \(p2.age)")
-        } else {
-            print("issue with person2 case")
         }
     }
 
     override func viewWillAppear() {
-        var divPos = getThumbsWidth(1)
-        if let screen = NSScreen.main() {
-            if screen.frame.width == 1440 {
-                print("laptop screen")
-                divPos = getThumbsWidth(2)
+        super.viewWillAppear()
+        NSLog("topview \(#function)")
+
+        guard let thumbsView = splitViewItem(for: childViewControllers[0])
+            else { NSLog("topview: couldn't get thumbsview"); return }
+        // probably unnecessary
+        thumbsView.canCollapse = true
+
+        if thumbsCollapsed {
+            thumbsView.isCollapsed = true
+            NSLog("topview: thumbsview collapsed")
+        } else {
+            var divPos = dividerPos
+            if divPos == 0.0 {
+                if let screen = NSScreen.main() {
+                    if screen.frame.width == 1440 {
+                        // laptop
+                        divPos = getThumbsWidth(2)
+                    } else {
+                        divPos = getThumbsWidth(1)
+                    }
+                }
             }
+            NSLog("topview: setting divider at \(divPos)")
+            splitView.setPosition(CGFloat(divPos), ofDividerAt: 0)
         }
-        print("setting divider at \(divPos)")
-        splitView.setPosition(CGFloat(divPos), ofDividerAt: 0)
     }
-    
+
     override func viewWillDisappear() {
-        NSLog("topview controller will disappear")
+        super.viewWillDisappear()
+        NSLog("topview \(#function)")
+
+//        var actualDividerPos = -1.0
+        let thumbsView = childViewControllers[0]
+        let actualDividerPos = Double(thumbsView.view.frame.width)
+
         let config = ConfigManager.manager
         if let winConfig = config.getWinConfig() {
-            let key = winConfig.key
-            let isCollapsed = winConfig.thumbsCollapsed
-            let dividerPos = winConfig.dividerPos
-            print("topview \(#function)")
-            print("winConfig: key: \(key)  isCollapsed: \(String(describing: isCollapsed))  dividerPos: \(String(describing: dividerPos))")
+            NSLog("storing thumbsCollapsed: \(thumbsCollapsed), actualDividerPos: \(actualDividerPos)")
+            winConfig.thumbsCollapsed = thumbsCollapsed
+            winConfig.dividerPos = actualDividerPos
+            config.storeWinConfig(winConfig)
         } else {
-            print("topview couldn't get winConfig")
-//            config.storeSplitViewInfo(thumbsCollapsed: isCollapsed, dividerPos: dividerPos)
+            NSLog("couldn't get winConfig")
         }
     }
-    
+
     override func viewDidLayout() {
+        super.viewDidLayout()
+        NSLog("topview \(#function)")
+//        if let thumbsView = splitViewItem(for: childViewControllers[0]) {
+//            dividerPos = Double(thumbsView.viewController.view.frame.width)
+//            NSLog("new divider pos: \(dividerPos)")
+//        } else {
+//            NSLog("couldn't get thumbsview")
+//        }
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("topview x constraints:", xAxisConstraints)
     }
@@ -127,13 +127,9 @@ class TopViewController: NSSplitViewController {
 
     func collapseThumbsView() {
         if let thumbsView = splitViewItem(for: childViewControllers[0]) {
-            savedDividerPos = Double(thumbsView.viewController.view.frame.width)
-            print("collapsed thumbview - saved divider at: \(savedDividerPos)")
-            thumbsView.canCollapse = true
+            dividerPos = Double(thumbsView.viewController.view.frame.width)
+            NSLog("collapsed thumbview - saved divider at: \(dividerPos)")
             thumbsView.isCollapsed = true
-//            thumbsView.minimumThickness = 0.0
-//            splitView.setPosition(0.0, ofDividerAt: 0)
-//            splitView.adjustSubviews()
         }
     }
 
@@ -142,8 +138,7 @@ class TopViewController: NSSplitViewController {
             if thumbsView.isCollapsed {
                 thumbsView.isCollapsed = false
             }
-            splitView.setPosition(CGFloat(savedDividerPos), ofDividerAt: 0)
-            //            splitView.adjustSubviews()
+            splitView.setPosition(CGFloat(dividerPos), ofDividerAt: 0)
         }
     }
 

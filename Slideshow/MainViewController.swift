@@ -242,6 +242,7 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("mainview \(#function)")
 
 //        guard let splitVC = parent as? TopViewController else { return }
 //        imagesManager = splitVC.imagesManager as ImagesManager
@@ -263,10 +264,21 @@ class MainViewController: NSViewController {
     }
 
     override func viewDidLayout() {
+        super.viewDidLayout()
+        NSLog("mainview \(#function)")
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("mainview x constraints:", xAxisConstraints)
     }
 
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        NSLog("mainview \(#function)")
+    }
+
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        NSLog("mainview \(#function)")
+    }
 
     override var acceptsFirstResponder: Bool {
         return true
@@ -308,11 +320,11 @@ class MainViewController: NSViewController {
                 print("got D")
                 print("deleting current")
                 removeCurrent()
-                
+
             case "c":
                 print("copying \(imagesManager.currentFile.path)")
                 copyCurrent()
-                
+
             case "g":
                 print("got g")
                 DispatchQueue.main.async {
