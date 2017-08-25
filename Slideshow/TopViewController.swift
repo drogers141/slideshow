@@ -21,6 +21,7 @@ class TopViewController: NSSplitViewController {
     // divider position - this is used to set the divider and store its
     // location at certain times, but thumbsview's frame width is canonical
     var dividerPos = 0.0
+    // this flag is also just a cache for thumbview's isCollapsed
     var thumbsCollapsed = false
 
     let thumbSize = NSSize(width: 120.0, height: 120.0)
@@ -88,12 +89,17 @@ class TopViewController: NSSplitViewController {
         NSLog("topview \(#function)")
 
 //        var actualDividerPos = -1.0
-        let thumbsView = childViewControllers[0]
-        let actualDividerPos = Double(thumbsView.view.frame.width)
-
+        let thumbsVC = childViewControllers[0]
+        let actualDividerPos = Double(thumbsVC.view.frame.width)
+        if let thumbsView = splitViewItem(for: thumbsVC) {
+            thumbsCollapsed = thumbsView.isCollapsed
+            NSLog("storing actual thumbs collapsed state: \(thumbsCollapsed)")
+        } else {
+            NSLog("couldn't get thumbsview to get latest thumbsCollapsed state")
+        }
         let config = ConfigManager.manager
         if let winConfig = config.getWinConfig() {
-            NSLog("storing thumbsCollapsed: \(thumbsCollapsed), actualDividerPos: \(actualDividerPos)")
+            NSLog("storing actualDividerPos: \(actualDividerPos)")
             winConfig.thumbsCollapsed = thumbsCollapsed
             winConfig.dividerPos = actualDividerPos
             config.storeWinConfig(winConfig)
