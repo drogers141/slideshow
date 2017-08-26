@@ -687,7 +687,7 @@
             <objects>
                 <splitViewController id="yx0-GK-x7Q" customClass="TopViewController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="hU3-bk-8nT"/>
+                        <splitViewItem holdingPriority="351" id="hU3-bk-8nT"/>
                         <splitViewItem id="fTz-gQ-86y"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="aKL-aE-yPW">
