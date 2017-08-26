@@ -111,5 +111,19 @@ class ConfigManager {
         userDefaults.set(data, forKey: key)
     }
 
+    static func getKeyBindings() -> [String] {
+        return [
+            "->\t->\tnext",
+            "<-\t->\tprevious",
+            "up\t->\tpage forward (+10)",
+            "down\t->\tpage backward (-10)",
+            "c\t->\tcopy current",
+            "shift+d\t->\tdelete current",
+            "Space\t->\ttoggle autoplay",
+            "d\t->\tset autoplay delay",
+            "t\t->\ttoggle thumbs",
+            "k\t->\tshow keybindings"
+        ]
+    }
 }
 

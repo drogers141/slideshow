@@ -98,25 +98,25 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
     // NSCollectionViewDelegate protocol
 
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print("selected: indexPaths=\(indexPaths)")
+//        print("selected: indexPaths=\(indexPaths)")
         // assume single selection
         if let elem = indexPaths.first {
             let newIndex = elem.item
-            print("newIndex: \(newIndex)")
+//            print("newIndex: \(newIndex)")
             if let mainVC = getMainVC() {
                 mainVC.gotoIndex(newIndex)
             }
             let selectedIndexes = collectionView.selectionIndexes
             let selectedIndexPaths = collectionView.selectionIndexPaths
-            print("selectedIndexes: \(selectedIndexes)")
-            print("selectedIndexPaths: \(selectedIndexPaths)")
+//            print("selectedIndexes: \(selectedIndexes)")
+//            print("selectedIndexPaths: \(selectedIndexPaths)")
             let visibleIndexPaths = collectionView.indexPathsForVisibleItems()
-            print("visibleIndexPaths: \(visibleIndexPaths)")
-            if !selectedIndexPaths.isEmpty && visibleIndexPaths.contains(selectedIndexPaths.first!) {
-                print("selectedIndexPath is in visibleIndexPaths")
-            } else {
-                print("selectedIndexPath is not in visibleIndexPaths")
-            }
+//            print("visibleIndexPaths: \(visibleIndexPaths)")
+//            if !selectedIndexPaths.isEmpty && visibleIndexPaths.contains(selectedIndexPaths.first!) {
+//                print("selectedIndexPath is in visibleIndexPaths")
+//            } else {
+//                print("selectedIndexPath is not in visibleIndexPaths")
+//            }
         }
     }
 }

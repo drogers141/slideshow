@@ -184,7 +184,7 @@ class MainViewController: NSViewController {
         if let collectionView = thumbsVC.collectionView {
 
             var selectedIndexPaths = collectionView.selectionIndexPaths
-            print("before: selectedIndexPaths: \(selectedIndexPaths)")
+//            print("before: selectedIndexPaths: \(selectedIndexPaths)")
 
             collectionView.deselectAll(nil)
 
@@ -192,7 +192,7 @@ class MainViewController: NSViewController {
             collectionView.selectItems(at: selected, scrollPosition: NSCollectionViewScrollPosition.centeredVertically)
 
             selectedIndexPaths = collectionView.selectionIndexPaths
-            print("after: selectedIndexPaths: \(selectedIndexPaths)")
+//            print("after: selectedIndexPaths: \(selectedIndexPaths)")
         }
     }
 
@@ -306,13 +306,13 @@ class MainViewController: NSViewController {
         } else if charKeys.contains(event.characters!) {
             switch event.characters! {
             case "d":
-                print("got d")
+//                print("got d")
                 DispatchQueue.main.async {
                     self.mainImage.window?.makeFirstResponder(self.delayTextField)
                 }
             case "D":
-                print("got D")
-                print("deleting current")
+//                print("got D")
+                print("moving \(imagesManager.currentFile.path) to \(imagesManager.trashDir)")
                 removeCurrent()
 
             case "c":
@@ -320,19 +320,23 @@ class MainViewController: NSViewController {
                 copyCurrent()
 
             case "g":
-                print("got g")
+//                print("got g")
                 DispatchQueue.main.async {
                     self.mainImage.window?.makeFirstResponder(self.gotoTextField)
                 }
             case "t":
-                print("got t")
+//                print("got t")
                 guard let splitVC = parent as? TopViewController else { return }
                 splitVC.toggleThumbsView()
 
             case "k":
-                print("got k")
+//                print("got k")
+                let bindings = ConfigManager.getKeyBindings().joined(separator: "\n")
+                let bindingsStr = "Keybindings:\n\(bindings)"
+                print("Keybindings:\n\(bindingsStr)")
+
             case " ":
-                print("got space")
+//                print("got space")
                 handleAutoplayAction()
 
             default:
@@ -350,7 +354,6 @@ class MainViewController: NSViewController {
     }
 
 
-    // TODO handle reverse direction
     func doAutoplay() {
         print("doAutoplay")
 //        autoplayDelay = Double(delayTextField.stringValue)!

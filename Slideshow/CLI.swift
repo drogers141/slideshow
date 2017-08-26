@@ -6,7 +6,7 @@
 //  Copyright © 2017 David Rogers. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 
 
@@ -62,10 +62,13 @@ func handleProgramArgs() -> (String, Array<String>) {
                 }
             }
         } else {
+            print("file doesn't exist: \(firstArg)")
             print(usage)
+            NSApplication.shared().terminate(nil)
         }
     } else {
         print(usage)
+        NSApplication.shared().terminate(nil)
     }
     return (type, content)
 }
