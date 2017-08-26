@@ -138,6 +138,8 @@ class TopViewController: NSSplitViewController {
             if thumbsView.isCollapsed {
                 thumbsView.isCollapsed = false
             }
+            // divider position wasn't saved
+            dividerPos = max(dividerPos, getThumbsWidth(1))
             splitView.setPosition(CGFloat(dividerPos), ofDividerAt: 0)
         }
     }
