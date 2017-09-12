@@ -34,7 +34,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        NSLog("window controller: \(#function)")
+//        NSLog("window controller: \(#function)")
         guard let win = window else { NSLog("couldn't get window"); return }
         var winFrame = getDefaultFrame()
         let config = ConfigManager.manager
@@ -54,7 +54,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
     }
 
     func windowWillClose(_ notification: Notification) {
-        NSLog("window controller: \(#function)")
+//        NSLog("window controller: \(#function)")
         if let window = window {
             let frame = window.frame
             let (x, y) = (Double(frame.minX), Double(frame.minY))
@@ -64,9 +64,9 @@ class WindowController: NSWindowController, NSWindowDelegate {
             if let winConfig = config.getWinConfig() {
                 let key = winConfig.key
                 let win = winConfig.window
-                NSLog("winConfig: key: \(key) win: \(win)")
+//                NSLog("winConfig: key: \(key) win: \(win)")
                 let newWin = [x, y, w, h]
-                NSLog("storing window frame = \(newWin)")
+//                NSLog("storing window frame = \(newWin)")
                 winConfig.window = newWin
                 config.storeWinConfig(winConfig)
 

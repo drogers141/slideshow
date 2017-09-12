@@ -49,9 +49,9 @@ class TopViewController: NSSplitViewController {
         if let winConfig = config.getWinConfig() {
             thumbsCollapsed = winConfig.thumbsCollapsed
             dividerPos = winConfig.dividerPos
-            NSLog("loading from userdefaults thumbsCollapsed: \(thumbsCollapsed), dividerPos: \(dividerPos)")
+//            NSLog("loading from userdefaults thumbsCollapsed: \(thumbsCollapsed), dividerPos: \(dividerPos)")
         } else {
-            print("did not get winConfig")
+            NSLog("did not get winConfig")
         }
     }
 
@@ -66,7 +66,7 @@ class TopViewController: NSSplitViewController {
 
         if thumbsCollapsed {
             thumbsView.isCollapsed = true
-            NSLog("topview: thumbsview collapsed")
+//            NSLog("topview: thumbsview collapsed")
         } else {
             var divPos = dividerPos
             if divPos == 0.0 {
@@ -86,20 +86,20 @@ class TopViewController: NSSplitViewController {
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        NSLog("topview \(#function)")
+//        NSLog("topview \(#function)")
 
 //        var actualDividerPos = -1.0
         let thumbsVC = childViewControllers[0]
         let actualDividerPos = Double(thumbsVC.view.frame.width)
         if let thumbsView = splitViewItem(for: thumbsVC) {
             thumbsCollapsed = thumbsView.isCollapsed
-            NSLog("storing actual thumbs collapsed state: \(thumbsCollapsed)")
+//            NSLog("storing actual thumbs collapsed state: \(thumbsCollapsed)")
         } else {
             NSLog("couldn't get thumbsview to get latest thumbsCollapsed state")
         }
         let config = ConfigManager.manager
         if let winConfig = config.getWinConfig() {
-            NSLog("storing actualDividerPos: \(actualDividerPos)")
+//            NSLog("storing actualDividerPos: \(actualDividerPos)")
             winConfig.thumbsCollapsed = thumbsCollapsed
             winConfig.dividerPos = actualDividerPos
             config.storeWinConfig(winConfig)
@@ -110,7 +110,7 @@ class TopViewController: NSSplitViewController {
 
     override func viewDidLayout() {
         super.viewDidLayout()
-        NSLog("topview \(#function)")
+//        NSLog("topview \(#function)")
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("topview x constraints:", xAxisConstraints)
     }
@@ -128,7 +128,7 @@ class TopViewController: NSSplitViewController {
     func collapseThumbsView() {
         if let thumbsView = splitViewItem(for: childViewControllers[0]) {
             dividerPos = Double(thumbsView.viewController.view.frame.width)
-            NSLog("collapsed thumbview - saved divider at: \(dividerPos)")
+//            NSLog("collapsed thumbview - saved divider at: \(dividerPos)")
             thumbsView.isCollapsed = true
         }
     }

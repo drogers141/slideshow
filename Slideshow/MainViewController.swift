@@ -19,7 +19,7 @@ class MainViewController: NSViewController {
     @IBAction func gotoTextSent(_ sender: NSTextField) {
         let text = gotoTextField.stringValue.trimmingCharacters(in: .whitespaces)
         guard text != "" else { return }
-        print("goto text=\(text)")
+//        print("goto text=\(text)")
         let val = Int(text)
         if val != nil {
             gotoIndex(val!)
@@ -62,11 +62,11 @@ class MainViewController: NSViewController {
 
     func handleAutoplayAction() {
         if autoplay == true {
-            print("autoplay off")
+//            print("autoplay off")
             autoplayButton.title = "Autoplay"
             autoplay = false
         } else {
-            print("autoplay on")
+//            print("autoplay on")
             autoplayButton.title = "Stop"
             autoplay = true
             doAutoplay()
@@ -141,12 +141,12 @@ class MainViewController: NSViewController {
     func gotoIndex(_ index: Int) {
         guard imagesManager.currentIndex != index && index < imagesManager.currentFiles.count
             && index >= 0 else { return }
-        print("goto index")
+//        print("goto index")
         imagesManager.currentIndex = index
         displayCurrent()
     }
     func gotoGlob(_ glob: String) {
-        print("goto glob")
+//        print("goto glob")
         let index = imagesManager.searchForFile(glob)
         if index != -1 {
             imagesManager.currentIndex = index
@@ -183,7 +183,7 @@ class MainViewController: NSViewController {
         }
         if let collectionView = thumbsVC.collectionView {
 
-            var selectedIndexPaths = collectionView.selectionIndexPaths
+//            var selectedIndexPaths = collectionView.selectionIndexPaths
 //            print("before: selectedIndexPaths: \(selectedIndexPaths)")
 
             collectionView.deselectAll(nil)
@@ -191,7 +191,7 @@ class MainViewController: NSViewController {
             let selected: Set = [IndexPath(item: index, section: 0)]
             collectionView.selectItems(at: selected, scrollPosition: NSCollectionViewScrollPosition.centeredVertically)
 
-            selectedIndexPaths = collectionView.selectionIndexPaths
+//            selectedIndexPaths = collectionView.selectionIndexPaths
 //            print("after: selectedIndexPaths: \(selectedIndexPaths)")
         }
     }
@@ -239,7 +239,7 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("mainview \(#function)")
+//        NSLog("mainview \(#function)")
 
         view.wantsLayer = true
         view.layer?.backgroundColor = backgroundColor
@@ -252,26 +252,26 @@ class MainViewController: NSViewController {
         mainImage.layer?.borderWidth = imageBorderWidth
 
         initImages()
-        print("currentFiles: \(imagesManager.currentFiles.count)")
-        print("images manager currentFile: \(imagesManager.currentFile)")
+        print("files: \(imagesManager.currentFiles.count)")
+        print("current: \(imagesManager.currentFile)")
         startGUI()
     }
 
     override func viewDidLayout() {
         super.viewDidLayout()
-        NSLog("mainview \(#function)")
+//        NSLog("mainview \(#function)")
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("mainview x constraints:", xAxisConstraints)
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        NSLog("mainview \(#function)")
+//        NSLog("mainview \(#function)")
     }
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        NSLog("mainview \(#function)")
+//        NSLog("mainview \(#function)")
     }
 
     override var acceptsFirstResponder: Bool {
@@ -355,8 +355,7 @@ class MainViewController: NSViewController {
 
 
     func doAutoplay() {
-        print("doAutoplay")
-//        autoplayDelay = Double(delayTextField.stringValue)!
+//        print("doAutoplay")
         if autoplay == true {
             if direction == "forward" {
                 next()
@@ -372,7 +371,7 @@ class MainViewController: NSViewController {
             Timer.scheduledTimer(timeInterval: delay, target: self, selector: #selector(doAutoplay),
                                  userInfo: nil, repeats: false)
         } else {
-            print("autoplay off")
+//            print("autoplay off")
         }
     }
 
