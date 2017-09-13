@@ -27,15 +27,13 @@ func handleProgramArgs() -> (String, Array<String>) {
     let fileManager = FileManager.default
     var content = [String]()
     var type = "directories"
-    print("command line args:")
     var checkforDir : ObjCBool = false
     if CommandLine.argc > 1 {
         let firstArg = CommandLine.arguments[1]
-        print("firstArg: \(firstArg)")
 
         if fileManager.fileExists(atPath: firstArg, isDirectory: &checkforDir) {
             if checkforDir.boolValue == true {
-                print("directories")
+//                print("directories")
                 for i in 1...CommandLine.argc-1 {
                     let index = Int(i);
 
@@ -46,7 +44,7 @@ func handleProgramArgs() -> (String, Array<String>) {
                     }
                 }
             } else {
-                print("files")
+//                print("files")
                 type = "files"
                 checkforDir = false
                 if fileManager.fileExists(atPath: firstArg, isDirectory: &checkforDir) {

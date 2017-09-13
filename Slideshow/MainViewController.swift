@@ -218,7 +218,6 @@ class MainViewController: NSViewController {
         } else {
             print("** not directories or files? **")
         }
-        print("top view init images")
     }
 
     func startGUI() {
@@ -227,7 +226,6 @@ class MainViewController: NSViewController {
         imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
         imageFileName.title = imagesManager.currentFile.path
         delayTextField.stringValue = "\(autoplayDelay)"
-        print("autoplayDelay = \(autoplayDelay)")
 
         // allows the viewcontroller to be a first responder and the key events will be sent to it
         // otherwise, default behavior was for any keys to go to the text field
@@ -253,7 +251,7 @@ class MainViewController: NSViewController {
 
         initImages()
         print("files: \(imagesManager.currentFiles.count)")
-        print("current: \(imagesManager.currentFile)")
+        //print("current: \(imagesManager.currentFile)")
         startGUI()
     }
 

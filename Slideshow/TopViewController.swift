@@ -43,7 +43,7 @@ class TopViewController: NSSplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("topview \(#function)")
+//        NSLog("topview \(#function)")
 
         let config = ConfigManager.manager
         if let winConfig = config.getWinConfig() {
@@ -57,7 +57,7 @@ class TopViewController: NSSplitViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        NSLog("topview \(#function)")
+//        NSLog("topview \(#function)")
 
         guard let thumbsView = splitViewItem(for: childViewControllers[0])
             else { NSLog("topview: couldn't get thumbsview"); return }
@@ -79,7 +79,7 @@ class TopViewController: NSSplitViewController {
                     }
                 }
             }
-            NSLog("topview: setting divider at \(divPos)")
+//            NSLog("topview: setting divider at \(divPos)")
             splitView.setPosition(CGFloat(divPos), ofDividerAt: 0)
         }
     }

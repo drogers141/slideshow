@@ -47,26 +47,26 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("thumbsview \(#function)")
+//        NSLog("thumbsview \(#function)")
         configureCollectionView()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        NSLog("thumbsview \(#function)")
+//        NSLog("thumbsview \(#function)")
     }
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        NSLog("thumbsview \(#function)")
-        NSLog("thumbsview: frame size = \(view.frame.size)")
+//        NSLog("thumbsview \(#function)")
+//        NSLog("thumbsview: frame size = \(view.frame.size)")
     }
 
     override func viewDidLayout() {
         super.viewDidLayout()
-        NSLog("thumbsview \(#function)")
-        let width = view.frame.width
-        NSLog("width: \(width)")
+//        NSLog("thumbsview \(#function)")
+//        let width = view.frame.width
+//        NSLog("width: \(width)")
 //        let xAxisConstraints = view.constraintsAffectingLayout(for: NSLayoutConstraintOrientation.horizontal)
 //        printConstraints("thumbview x constraints:", xAxisConstraints)
     }
@@ -106,11 +106,11 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
             if let mainVC = getMainVC() {
                 mainVC.gotoIndex(newIndex)
             }
-            let selectedIndexes = collectionView.selectionIndexes
-            let selectedIndexPaths = collectionView.selectionIndexPaths
+//            let selectedIndexes = collectionView.selectionIndexes
+//            let selectedIndexPaths = collectionView.selectionIndexPaths
 //            print("selectedIndexes: \(selectedIndexes)")
 //            print("selectedIndexPaths: \(selectedIndexPaths)")
-            let visibleIndexPaths = collectionView.indexPathsForVisibleItems()
+//            let visibleIndexPaths = collectionView.indexPathsForVisibleItems()
 //            print("visibleIndexPaths: \(visibleIndexPaths)")
 //            if !selectedIndexPaths.isEmpty && visibleIndexPaths.contains(selectedIndexPaths.first!) {
 //                print("selectedIndexPath is in visibleIndexPaths")
