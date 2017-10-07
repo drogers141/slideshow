@@ -390,6 +390,7 @@ class MainViewController: NSViewController {
                 thumbsVC.collectionView.deleteItems(at: thumbsVC.collectionView.selectionIndexPaths)
                 thumbsVC.collectionView.reloadData()
             }
+            displayCurrent()
         }
         catch let error as NSError {
             print("copyCurrent error:\nerror: \(error)\nerror domain: \(error.domain)")

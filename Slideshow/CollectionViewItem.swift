@@ -14,10 +14,13 @@ class CollectionViewItem: NSCollectionViewItem {
     // NSColor(red: 0.07, green: 0.09, blue: 0.16, alpha: 1.0).cgColor
     // lightish green
     // NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
+    // slate gray 112-138-144
+    // light gray 211
     // NSColor.darkGray.cgColor
-    let regularBackgroundColor = NSColor.gray.cgColor
+    // NSColor.gray.cgColor
+    let regularBackgroundColor = NSColor.lightGray.cgColor
     // NSColor.lightGray.cgColor  rgb(72%, 85%, 41%)
-    let gifBackgroundColor = NSColor.lightGray.cgColor
+    let gifBackgroundColor = NSColor.darkGray.cgColor
     // only shown when selected
     // NSColor.white.cgColor
     let borderColor = NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
