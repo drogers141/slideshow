@@ -35,12 +35,12 @@ class Glob {
         // "sub*[..]", "[..]*sub" cases
         if !glob.hasPrefix("*") {
             if !remainingInput.hasPrefix(globParts[0]) {
-                print("not prefix")
+//                print("not prefix")
                 return false
             }
         } else if !glob.hasSuffix("*") {
             if !remainingInput.hasSuffix(globParts[globParts.count-1]) {
-                print("not suffix")
+//                print("not suffix")
                 return false
             }
         }
