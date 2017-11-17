@@ -23,7 +23,7 @@ class CollectionViewItem: NSCollectionViewItem {
     let gifBackgroundColor = NSColor.darkGray.cgColor
     // only shown when selected
     // NSColor.white.cgColor
-    let borderColor = NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
+    var borderColor = NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
 
     var imageFile: ThumbImageFile? {
         didSet {
@@ -39,13 +39,24 @@ class CollectionViewItem: NSCollectionViewItem {
         }
     }
 
+    func setAppearanceTheme() {
+        if ConfigManager.manager.appearanceTheme == .dark {
+            borderColor = NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
+        } else {
+            borderColor = NSColor.black.cgColor
+        }
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true
         view.layer?.backgroundColor = regularBackgroundColor
         // border not showing
-        view.layer?.borderColor = borderColor
         view.layer?.borderWidth = 0.0
+        setAppearanceTheme()
+        view.layer?.borderColor = borderColor
+
     }
 
     override var isSelected: Bool {

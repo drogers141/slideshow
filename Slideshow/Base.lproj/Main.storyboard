@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -693,8 +693,12 @@
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="aKL-aE-yPW">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="yx0-GK-x7Q" id="aAk-tC-Hkx"/>
+                        </connections>
                     </splitView>
                     <connections>
+                        <outlet property="splitView" destination="aKL-aE-yPW" id="FYz-AY-UJ9"/>
                         <segue destination="NBE-2b-7jn" kind="relationship" relationship="splitItems" id="mZP-hE-jCg"/>
                         <segue destination="u9H-pr-TaD" kind="relationship" relationship="splitItems" id="ejS-9w-vhb"/>
                     </connections>
@@ -774,7 +778,7 @@
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
                                                 <rect key="frame" x="0.0" y="16.5" width="747" height="17"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-C9-MNY" userLabel="Image Index Label">
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-C9-MNY" userLabel="Image Index Label">
                                                         <rect key="frame" x="-2" y="0.0" width="84" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="HO2-ro-foA"/>
@@ -785,7 +789,7 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="249" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-La-bvH" userLabel="Image Filename Label">
+                                                    <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="5bB-La-bvH" userLabel="Image Filename Label">
                                                         <rect key="frame" x="86" y="0.0" width="663" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="Image File Name" id="rkM-wS-YFh">
                                                             <font key="font" metaFont="system"/>
@@ -806,7 +810,7 @@
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o7S-Wb-0SW">
                                                 <rect key="frame" x="755" y="14" width="180" height="22"/>
                                                 <subviews>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-0F-Tdx">
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-0F-Tdx">
                                                         <rect key="frame" x="-2" y="2.5" width="44" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="xRO-Mu-4CP"/>
@@ -817,7 +821,7 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XZ-uG-0uA" userLabel="Goto Text Field">
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3XZ-uG-0uA" userLabel="Goto Text Field">
                                                         <rect key="frame" x="48" y="0.0" width="132" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="132" id="PHV-D9-qJv"/>
@@ -967,7 +971,7 @@
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-9Q-ihg">
                                                         <rect key="frame" x="0.0" y="0.0" width="92" height="22"/>
                                                         <subviews>
-                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmq-Aj-w5G">
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zmq-Aj-w5G">
                                                                 <rect key="frame" x="-2" y="5" width="38" height="17"/>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Delay" id="0O3-kn-CHQ">
                                                                     <font key="font" metaFont="system"/>
@@ -975,7 +979,7 @@
                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                             </textField>
-                                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PH9-is-ipU" userLabel="Delay Text Field">
+                                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PH9-is-ipU" userLabel="Delay Text Field">
                                                                 <rect key="frame" x="42" y="0.0" width="50" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="50" id="xvC-IX-jGC"/>

@@ -15,7 +15,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
     let thumbSize = NSSize(width: 120.0, height: 120.0)
 
     // no headers so this is the only background
-    let backgroundColor = NSColor.black.cgColor
+    var backgroundColor = NSColor.black.cgColor
 
     // could do these more swiftly as optional computed property I believe
     fileprivate func getMainVC() -> MainViewController? {
@@ -45,9 +45,21 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
         collectionView.allowsMultipleSelection = false
     }
 
+    func setAppearanceTheme() {
+        if ConfigManager.manager.appearanceTheme == .dark {
+            backgroundColor = NSColor.black.cgColor
+        } else {
+            backgroundColor = NSColor.windowBackgroundColor.cgColor
+            // or
+//            backgroundColor = NSColor.white.cgColor
+        }
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 //        NSLog("thumbsview \(#function)")
+        setAppearanceTheme()
         configureCollectionView()
     }
 

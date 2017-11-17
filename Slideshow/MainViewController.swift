@@ -89,22 +89,52 @@ class MainViewController: NSViewController {
         pageBackward()
     }
 
+    func setAppearanceTheme() {
+        if ConfigManager.manager.appearanceTheme == .dark {
+            backgroundColor = NSColor.windowBackgroundColor.cgColor
+            // no effect at this point - maybe eliminate
+            imageBackgroundColor = NSColor.black.cgColor
+            imageBorderWidth = CGFloat(5.0)
+            imageBorderColor = NSColor(red: 0.71, green: 0.46, blue: 0.68, alpha: 1.0).cgColor
+        } else {
+            backgroundColor = NSColor.windowBackgroundColor.cgColor
+            // no effect at this point - maybe eliminate
+            imageBackgroundColor = NSColor.windowBackgroundColor.cgColor
+            imageBorderWidth = CGFloat(1.0)
+            imageBorderColor = NSColor.black.cgColor
+        }
+
+        view.layer?.backgroundColor = backgroundColor
+
+        mainImage.layer?.backgroundColor = imageBackgroundColor
+        mainImage.layer?.masksToBounds = true
+        mainImage.layer?.borderWidth = imageBorderWidth
+        mainImage.layer?.borderColor = imageBorderColor
+        mainImage.layer?.borderWidth = imageBorderWidth
+
+    }
     // ************************************************************//
 
     // OTHER CONFIG - TODO: use userdefaults
 
+//    let theme = ConfigManager.manager.appearanceTheme
+
     // default: NSColor.windowBackgroundColor.cgColor
     // background for everything but imageview
     // e.g. NSColor.black.cgColor
-    let backgroundColor = NSColor.windowBackgroundColor.cgColor
+    var backgroundColor = NSColor.windowBackgroundColor.cgColor
     // not working
-    let imageBackgroundColor = NSColor.black.cgColor
-    let imageBorderWidth = CGFloat(5.0)
+    var imageBackgroundColor = NSColor.black.cgColor
+
+//    if theme == .dark {
+//        print("theme is dark")
+//    }
+    var imageBorderWidth = CGFloat(5.0)
 //    let imageBorderRadius = CGFloat(8.0)
 
     // rgb(73%, 80%, 81%) - cool gray
     // rgb(71%, 46%, 68%) - purple
-    let imageBorderColor = NSColor(red: 0.71, green: 0.46, blue: 0.68, alpha: 1.0).cgColor
+    var imageBorderColor = NSColor(red: 0.71, green: 0.46, blue: 0.68, alpha: 1.0).cgColor
 
     // note the need for an implicitly unwrapped optional to avoid null-checking, etc
     // everywhere this member is used
@@ -239,16 +269,19 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
 //        NSLog("mainview \(#function)")
 
+        ConfigManager.manager.appearanceTheme = .dark
+
         view.wantsLayer = true
-        view.layer?.backgroundColor = backgroundColor
+//        view.layer?.backgroundColor = backgroundColor
 
         mainImage.wantsLayer = true
-        mainImage.layer?.backgroundColor = imageBackgroundColor
-        mainImage.layer?.masksToBounds = true
-        mainImage.layer?.borderWidth = imageBorderWidth
-        mainImage.layer?.borderColor = imageBorderColor
-        mainImage.layer?.borderWidth = imageBorderWidth
+//        mainImage.layer?.backgroundColor = imageBackgroundColor
+//        mainImage.layer?.masksToBounds = true
+//        mainImage.layer?.borderWidth = imageBorderWidth
+//        mainImage.layer?.borderColor = imageBorderColor
+//        mainImage.layer?.borderWidth = imageBorderWidth
 
+        setAppearanceTheme()
         initImages()
         print("files: \(imagesManager.currentFiles.count)")
         //print("current: \(imagesManager.currentFile)")

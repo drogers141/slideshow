@@ -13,24 +13,28 @@
 //
 import Cocoa
 
-class Person: NSObject, NSCoding {
-    var name = ""
-    var age = 0
-    init(name: String, age: Int) {
-        self.name = name
-        self.age = age
-    }
-    required init(coder decoder: NSCoder) {
-        self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
-        self.age = decoder.decodeInteger(forKey: "age")
-    }
+//class Person: NSObject, NSCoding {
+//    var name = ""
+//    var age = 0
+//    init(name: String, age: Int) {
+//        self.name = name
+//        self.age = age
+//    }
+//    required init(coder decoder: NSCoder) {
+//        self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
+//        self.age = decoder.decodeInteger(forKey: "age")
+//    }
+//
+//    func encode(with coder: NSCoder) {
+//        coder.encode(name, forKey: "name")
+//        coder.encode(age, forKey: "age")
+//    }
+//}
 
-    func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: "name")
-        coder.encode(age, forKey: "age")
-    }
+enum AppearanceTheme {
+    case light
+    case dark
 }
-
 
 class WinConfig: NSObject, NSCoding {
 
@@ -78,6 +82,8 @@ class ConfigManager {
 
     static let manager = ConfigManager()
     let userDefaults = UserDefaults.standard
+
+    var appearanceTheme = AppearanceTheme.dark
 
     func getWinConfigKey() -> String? {
         if let screen = NSScreen.main() {
