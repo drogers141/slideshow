@@ -11,10 +11,6 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    func applicationWillFinishLaunching(_ notification: Notification) {
-//        ConfigManager.manager.appearanceTheme = .dark
-    }
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // necessary when launching from the commandline
         NSApp.activate(ignoringOtherApps: true)

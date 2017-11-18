@@ -40,11 +40,16 @@ class CollectionViewItem: NSCollectionViewItem {
     }
 
     func setAppearanceTheme() {
-        if ConfigManager.manager.appearanceTheme == .dark {
+        guard let winConfig = ConfigManager.manager.getWinConfig()  else {
+            NSLog("MainViewController: did not get winConfig")
+            return
+        }
+        if winConfig.appearanceTheme == .dark {
             borderColor = NSColor(red: 0.72, green: 0.85, blue: 0.41, alpha: 1.0).cgColor
         } else {
             borderColor = NSColor.black.cgColor
         }
+//        print("\(#function)")
 
     }
 
@@ -61,8 +66,9 @@ class CollectionViewItem: NSCollectionViewItem {
 
     override var isSelected: Bool {
         didSet {
-            // if selected add border
+            setAppearanceTheme()
             view.layer?.borderWidth = isSelected ? 5.0 : 0.0
+            view.layer?.borderColor = borderColor
         }
     }
 }

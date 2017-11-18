@@ -43,10 +43,15 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
         view.wantsLayer = true
         collectionView.layer?.backgroundColor = backgroundColor
         collectionView.allowsMultipleSelection = false
+//        print("\(#function): configured")
     }
 
     func setAppearanceTheme() {
-        if ConfigManager.manager.appearanceTheme == .dark {
+        guard let winConfig = ConfigManager.manager.getWinConfig()  else {
+            NSLog("ThumbsViewController: did not get winConfig")
+            return
+        }
+        if winConfig.appearanceTheme == .dark {
             backgroundColor = NSColor.black.cgColor
         } else {
             backgroundColor = NSColor.windowBackgroundColor.cgColor

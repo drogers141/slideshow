@@ -10,30 +10,14 @@
 //     window: [x, y, w, h] (Double)
 //     thumbsCollapsed: Bool
 //     dividerPos: Double
+//     appearanceTheme: enum := light | dark
 //
 import Cocoa
 
-//class Person: NSObject, NSCoding {
-//    var name = ""
-//    var age = 0
-//    init(name: String, age: Int) {
-//        self.name = name
-//        self.age = age
-//    }
-//    required init(coder decoder: NSCoder) {
-//        self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
-//        self.age = decoder.decodeInteger(forKey: "age")
-//    }
-//
-//    func encode(with coder: NSCoder) {
-//        coder.encode(name, forKey: "name")
-//        coder.encode(age, forKey: "age")
-//    }
-//}
 
-enum AppearanceTheme {
-    case light
-    case dark
+enum AppearanceTheme: String {
+    case light = "light"
+    case dark = "dark"
 }
 
 class WinConfig: NSObject, NSCoding {
@@ -45,19 +29,21 @@ class WinConfig: NSObject, NSCoding {
     var window = [0.0, 0.0, 0.0, 0.0]
     var thumbsCollapsed = true
     var dividerPos = 0.0
+    var appearanceTheme = AppearanceTheme.dark
 
     static func defaultConfig() -> WinConfig {
         return WinConfig(key: "", screen: [0.0, 0.0], window: [0.0, 0.0, 0.0, 0.0],
-                         thumbsCollapsed: true, dividerPos: 0.0)
+                         thumbsCollapsed: true, dividerPos: 0.0, appearanceTheme: AppearanceTheme.dark)
     }
 
     init(key: String, screen: [Double], window: [Double], thumbsCollapsed: Bool,
-         dividerPos: Double) {
+         dividerPos: Double, appearanceTheme: AppearanceTheme) {
         self.key = key
         self.screen = screen
         self.window = window
         self.thumbsCollapsed = thumbsCollapsed
         self.dividerPos = dividerPos
+        self.appearanceTheme = appearanceTheme
 //        super.init()
     }
 
@@ -67,6 +53,7 @@ class WinConfig: NSObject, NSCoding {
         self.window = decoder.decodeObject(forKey: "window") as? [Double] ?? [0.0, 0.0, 0.0, 0.0]
         self.thumbsCollapsed = decoder.decodeBool(forKey: "thumbsCollapsed")
         self.dividerPos = decoder.decodeDouble(forKey: "dividerPos")
+        self.appearanceTheme = AppearanceTheme(rawValue: decoder.decodeObject(forKey: "appearanceTheme") as? String ?? "dark")!
     }
 
     func encode(with encoder: NSCoder) {
@@ -75,6 +62,7 @@ class WinConfig: NSObject, NSCoding {
         encoder.encode(window, forKey: "window")
         encoder.encode(thumbsCollapsed, forKey: "thumbsCollapsed")
         encoder.encode(dividerPos, forKey: "dividerPos")
+        encoder.encode(appearanceTheme.rawValue, forKey: "appearanceTheme")
     }
 }
 
@@ -82,8 +70,6 @@ class ConfigManager {
 
     static let manager = ConfigManager()
     let userDefaults = UserDefaults.standard
-
-    var appearanceTheme = AppearanceTheme.dark
 
     func getWinConfigKey() -> String? {
         if let screen = NSScreen.main() {

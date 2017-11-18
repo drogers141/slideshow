@@ -766,14 +766,14 @@
             <objects>
                 <viewController id="u9H-pr-TaD" customClass="MainViewController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="1B5-Yk-zQx">
-                        <rect key="frame" x="0.0" y="0.0" width="975" height="697"/>
+                        <rect key="frame" x="0.0" y="0.0" width="975" height="770"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-9h-4w1" userLabel="Main Stack View">
-                                <rect key="frame" x="0.0" y="0.0" width="975" height="697"/>
+                                <rect key="frame" x="0.0" y="0.0" width="975" height="770"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="260" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaT-Oh-dqu" userLabel="Header Stack View">
-                                        <rect key="frame" x="20" y="647" width="935" height="50"/>
+                                        <rect key="frame" x="20" y="720" width="935" height="50"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
                                                 <rect key="frame" x="0.0" y="16.5" width="747" height="17"/>
@@ -859,11 +859,11 @@
                                         </customSpacing>
                                     </stackView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yFS-MK-0FO">
-                                        <rect key="frame" x="5" y="81" width="965" height="561"/>
+                                        <rect key="frame" x="5" y="81" width="965" height="634"/>
                                         <imageCell key="cell" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
-                                        <rect key="frame" x="305.5" y="0.0" width="364" height="76"/>
+                                        <rect key="frame" x="278.5" y="0.0" width="418" height="76"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j82-TH-bci">
                                                 <rect key="frame" x="0.0" y="13" width="68" height="50"/>
@@ -1013,6 +1013,49 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Al-Qm-glU">
+                                                <rect key="frame" x="372" y="5.5" width="46" height="65"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EYN-qe-J6K">
+                                                        <rect key="frame" x="0.0" y="48" width="46" height="17"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Theme" id="lQe-sq-xB0">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9TT-uv-ZU9">
+                                                        <rect key="frame" x="-1" y="23" width="49" height="18"/>
+                                                        <buttonCell key="cell" type="radio" title="light" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8rH-AQ-Q7P">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="themeRadioBtnChanged:" target="u9H-pr-TaD" id="qk9-DS-NSV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kmi-Nx-emO">
+                                                        <rect key="frame" x="-1" y="-1" width="49" height="18"/>
+                                                        <buttonCell key="cell" type="radio" title="dark" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="a1e-es-8eV">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="themeRadioBtnChanged:" target="u9H-pr-TaD" id="cyz-g6-aBr"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" identifier="footer-stackview-height" id="EeZ-Ca-cnp"/>
@@ -1021,8 +1064,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -1056,10 +1101,12 @@
                     </view>
                     <connections>
                         <outlet property="autoplayButton" destination="Sbd-0S-3Ml" id="1Fw-sO-GSJ"/>
+                        <outlet property="darkThemeRadioBtn" destination="kmi-Nx-emO" id="51a-KU-pdq"/>
                         <outlet property="delayTextField" destination="PH9-is-ipU" id="tf1-Fl-fWP"/>
                         <outlet property="gotoTextField" destination="3XZ-uG-0uA" id="GJw-jT-UZO"/>
                         <outlet property="imageFileName" destination="rkM-wS-YFh" id="hiU-IJ-7Uq"/>
                         <outlet property="imageIndexLabel" destination="A90-4d-pKK" id="H5v-IX-U66"/>
+                        <outlet property="lightThemeRadioBtn" destination="9TT-uv-ZU9" id="7Ff-yf-b1h"/>
                         <outlet property="mainImage" destination="yFS-MK-0FO" id="b3l-Aj-vh6"/>
                     </connections>
                 </viewController>

@@ -89,19 +89,54 @@ class MainViewController: NSViewController {
         pageBackward()
     }
 
+    @IBOutlet weak var lightThemeRadioBtn: NSButton!
+
+    @IBOutlet weak var darkThemeRadioBtn: NSButton!
+
+    @IBAction func themeRadioBtnChanged(_ sender: AnyObject) {
+        guard let winConfig = ConfigManager.manager.getWinConfig() else {
+            print("\(#function): couldn't get winConfig")
+            return
+        }
+        if lightThemeRadioBtn.state == NSOnState {
+            winConfig.appearanceTheme = .light
+        } else {
+            winConfig.appearanceTheme = .dark
+        }
+        ConfigManager.manager.storeWinConfig(winConfig)
+        updateAllAppearanceThemes()
+    }
+
+    func updateAllAppearanceThemes() {
+        setAppearanceTheme()
+        guard let thumbsVC = getThumbsVC() else {
+            print("\(#function): couldn't get thumbs viewcontroller")
+            return
+        }
+        thumbsVC.setAppearanceTheme()
+        thumbsVC.view.needsLayout = true
+        thumbsVC.viewDidLoad()
+    }
+
     func setAppearanceTheme() {
-        if ConfigManager.manager.appearanceTheme == .dark {
+        guard let winConfig = ConfigManager.manager.getWinConfig()  else {
+            NSLog("MainViewController: did not get winConfig")
+            return
+        }
+        if winConfig.appearanceTheme == .dark {
             backgroundColor = NSColor.windowBackgroundColor.cgColor
             // no effect at this point - maybe eliminate
             imageBackgroundColor = NSColor.black.cgColor
             imageBorderWidth = CGFloat(5.0)
             imageBorderColor = NSColor(red: 0.71, green: 0.46, blue: 0.68, alpha: 1.0).cgColor
+            darkThemeRadioBtn.state = NSOnState
         } else {
             backgroundColor = NSColor.windowBackgroundColor.cgColor
             // no effect at this point - maybe eliminate
             imageBackgroundColor = NSColor.windowBackgroundColor.cgColor
             imageBorderWidth = CGFloat(1.0)
             imageBorderColor = NSColor.black.cgColor
+            lightThemeRadioBtn.state = NSOnState
         }
 
         view.layer?.backgroundColor = backgroundColor
@@ -269,7 +304,7 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
 //        NSLog("mainview \(#function)")
 
-        ConfigManager.manager.appearanceTheme = .dark
+//        ConfigManager.manager.appearanceTheme = .dark
 
         view.wantsLayer = true
 //        view.layer?.backgroundColor = backgroundColor
