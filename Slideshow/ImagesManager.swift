@@ -59,7 +59,7 @@ class ImagesManager {
         var ret = [URL]()
         let fileManager = FileManager.default
         do {
-            let allFiles = try fileManager.contentsOfDirectory(atPath: dirPath)
+            let allFiles = try fileManager.contentsOfDirectory(atPath: dirPath).sorted()
             for f in allFiles
             {
                 //                print("checking \(f)")
