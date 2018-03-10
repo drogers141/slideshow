@@ -114,7 +114,8 @@ class ConfigManager {
             "Space\t->\ttoggle autoplay",
             "d\t->\tset autoplay delay",
             "t\t->\ttoggle thumbs",
-            "k\t->\tshow keybindings"
+            "k\t->\tshow keybindings",
+            "c or double-click -> open image in Preview"
         ]
     }
 }

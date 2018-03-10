@@ -112,6 +112,7 @@ class ImagesManager {
             try fileManager.moveItem(at: currentFile, to: dest)
         }
         currentFiles.remove(at: currentIndex)
+        currentIndex = currentIndex % currentFiles.count
     }
 
     // returns index of first matching file or -1

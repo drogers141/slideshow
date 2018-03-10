@@ -43,7 +43,7 @@ class TopViewController: NSSplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NSLog("topview \(#function)")
+        NSLog("topview \(#function)")
 
         let config = ConfigManager.manager
         if let winConfig = config.getWinConfig() {

@@ -39,11 +39,19 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         collectionView.collectionViewLayout = flowLayout
-
-        view.wantsLayer = true
-        collectionView.layer?.backgroundColor = backgroundColor
         collectionView.allowsMultipleSelection = false
+        view.wantsLayer = true
+        // layer not available here, unfortunately
+//        collectionView.layer?.backgroundColor = backgroundColor
 //        print("\(#function): configured")
+    }
+
+    func setBackgroundColor() {
+        if let cvLayer = collectionView.layer {
+            cvLayer.backgroundColor = backgroundColor
+        } else {
+            NSLog("\(#function) no collectionView layer")
+        }
     }
 
     func setAppearanceTheme() {
@@ -55,28 +63,40 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
             backgroundColor = NSColor.black.cgColor
         } else {
             backgroundColor = NSColor.windowBackgroundColor.cgColor
-            // or
-//            backgroundColor = NSColor.white.cgColor
         }
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NSLog("thumbsview \(#function)")
+        NSLog("thumbsview \(#function)")
         setAppearanceTheme()
         configureCollectionView()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-//        NSLog("thumbsview \(#function)")
+        NSLog("thumbsview \(#function)")
+        if let cvLayer = collectionView.layer {
+            cvLayer.backgroundColor = backgroundColor
+        } else {
+            NSLog("\(#function) no collectionView layer")
+        }
     }
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
 //        NSLog("thumbsview \(#function)")
 //        NSLog("thumbsview: frame size = \(view.frame.size)")
+    }
+
+    override func viewDidAppear() {
+        // sloppy but it works
+        // can't get the background layer until after everything is initialized
+        // though it should be available now
+        let when = DispatchTime.now() + 0.1
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.setBackgroundColor()
+            }
     }
 
     override func viewDidLayout() {

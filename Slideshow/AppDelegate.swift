@@ -11,9 +11,21 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        NSLog("appdelegate: \(#function)")
         // necessary when launching from the commandline
         NSApp.activate(ignoringOtherApps: true)
+//        if let mainVC = NSApp.mainWindow?.contentViewController?.childViewControllers[0] as? MainViewController {
+//            mainVC.updateAllAppearanceThemes()
+//        } else {
+//            NSLog("appdelegate: \(#function) - couldn't get main viewcontroller")
+//        }
+//        if let topVC =  {
+//            NSLog("got main win")
+//        } else {
+//            NSLog("appdelegate: \(#function) - couldn't get top viewcontroller")
+//        }
         // NSApp is global within app - below is how to do it otherwise
         //        NSApplication.shared().activate(ignoringOtherApps: true)
     }

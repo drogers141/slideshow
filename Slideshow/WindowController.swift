@@ -33,8 +33,8 @@ class WindowController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        NSLog("window controller: \(#function)")
 
-//        NSLog("window controller: \(#function)")
         guard let win = window else { NSLog("couldn't get window"); return }
         var winFrame = getDefaultFrame()
         let config = ConfigManager.manager

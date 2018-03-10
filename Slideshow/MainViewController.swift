@@ -108,6 +108,7 @@ class MainViewController: NSViewController {
     }
 
     func updateAllAppearanceThemes() {
+        NSLog("mainview \(#function)")
         setAppearanceTheme()
         guard let thumbsVC = getThumbsVC() else {
             print("\(#function): couldn't get thumbs viewcontroller")
@@ -302,7 +303,7 @@ class MainViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NSLog("mainview \(#function)")
+        NSLog("mainview \(#function)")
 
 //        ConfigManager.manager.appearanceTheme = .dark
 
@@ -346,7 +347,7 @@ class MainViewController: NSViewController {
 
     override func keyDown(with event: NSEvent) {
         let arrowKeys: Set = [123, 124, 125, 126]
-        let charKeys: Set = ["d", "D", "c", "g", "t", "k", " "]
+        let charKeys: Set = ["d", "D", "c", "g", "t", "k", " ", "o"]
 
         if arrowKeys.contains(Int(event.keyCode)) {
             switch Int(event.keyCode) {
@@ -398,12 +399,17 @@ class MainViewController: NSViewController {
             case "k":
 //                print("got k")
                 let bindings = ConfigManager.getKeyBindings().joined(separator: "\n")
-                let bindingsStr = "Keybindings:\n\(bindings)"
-                print("Keybindings:\n\(bindingsStr)")
+//                let bindingsStr = "Keybindings:\n\(bindings)"
+//                print("Keybindings:\n\(bindingsStr)")
+                print("Keybindings:\n\(bindings)")
 
             case " ":
 //                print("got space")
                 handleAutoplayAction()
+
+            case "o":
+                print("got o")
+                openCurrentExternally()
 
             default:
                 break
@@ -418,7 +424,11 @@ class MainViewController: NSViewController {
             self.mainImage.window?.makeFirstResponder(self)
         }
     }
-
+    override func mouseUp(with event: NSEvent) {
+        if event.clickCount > 1 && self.mainImage.bounds.contains(event.locationInWindow) {
+            openCurrentExternally()
+        }
+    }
 
     func doAutoplay() {
 //        print("doAutoplay")
@@ -462,6 +472,13 @@ class MainViewController: NSViewController {
         }
         catch let error as NSError {
             print("copyCurrent error:\nerror: \(error)\nerror domain: \(error.domain)")
+        }
+    }
+
+    // open current image in Preview
+    func openCurrentExternally() {
+        if NSWorkspace.shared().open(imagesManager.currentFile) == false {
+            NSLog("Couldn't open file with Preview: \(imagesManager.currentFile)")
         }
     }
 }
