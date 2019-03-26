@@ -320,6 +320,10 @@ class MainViewController: NSViewController {
         setAppearanceTheme()
         initImages()
         print("files: \(imagesManager.currentFiles.count)")
+        if imagesManager.currentFiles.count == 0 {
+            print("no image files - exiting")
+            NSApplication.shared().terminate(self)
+        }
         //print("current: \(imagesManager.currentFile)")
         startGUI()
     }

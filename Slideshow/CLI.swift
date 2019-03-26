@@ -78,7 +78,9 @@ func testAllGifs() {
     if type == "files" && content.count > 0 {
         print("content: \(content)")
         for dir in content {
+
             let imgs = ImagesManager.getImages(dirPath: dir)
+            print("imgs: \(imgs)")
             for url in imgs {
                 if url.pathExtension.lowercased() == "gif" {
                     if let info = gifInfo(url: url) {

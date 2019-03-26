@@ -60,6 +60,7 @@ class ImagesManager {
         let fileManager = FileManager.default
         do {
             let allFiles = try fileManager.contentsOfDirectory(atPath: dirPath).sorted()
+            print("allFiles: \(allFiles)")
             for f in allFiles
             {
                 //                print("checking \(f)")
