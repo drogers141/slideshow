@@ -98,7 +98,7 @@ class MainViewController: NSViewController {
             print("\(#function): couldn't get winConfig")
             return
         }
-        if lightThemeRadioBtn.state == NSOnState {
+        if lightThemeRadioBtn.state == NSControl.StateValue.on {
             winConfig.appearanceTheme = .light
         } else {
             winConfig.appearanceTheme = .dark
@@ -130,14 +130,14 @@ class MainViewController: NSViewController {
             imageBackgroundColor = NSColor.black.cgColor
             imageBorderWidth = CGFloat(5.0)
             imageBorderColor = NSColor(red: 0.71, green: 0.46, blue: 0.68, alpha: 1.0).cgColor
-            darkThemeRadioBtn.state = NSOnState
+            darkThemeRadioBtn.state = NSControl.StateValue.on
         } else {
             backgroundColor = NSColor.windowBackgroundColor.cgColor
             // no effect at this point - maybe eliminate
             imageBackgroundColor = NSColor.windowBackgroundColor.cgColor
             imageBorderWidth = CGFloat(1.0)
             imageBorderColor = NSColor.black.cgColor
-            lightThemeRadioBtn.state = NSOnState
+            lightThemeRadioBtn.state = NSControl.StateValue.on
         }
 
         view.layer?.backgroundColor = backgroundColor
@@ -255,7 +255,7 @@ class MainViewController: NSViewController {
             collectionView.deselectAll(nil)
 
             let selected: Set = [IndexPath(item: index, section: 0)]
-            collectionView.selectItems(at: selected, scrollPosition: NSCollectionViewScrollPosition.centeredVertically)
+            collectionView.selectItems(at: selected, scrollPosition: NSCollectionView.ScrollPosition.centeredVertically)
 
 //            selectedIndexPaths = collectionView.selectionIndexPaths
 //            print("after: selectedIndexPaths: \(selectedIndexPaths)")
@@ -322,7 +322,7 @@ class MainViewController: NSViewController {
         print("files: \(imagesManager.currentFiles.count)")
         if imagesManager.currentFiles.count == 0 {
             print("no image files - exiting")
-            NSApplication.shared().terminate(self)
+            NSApplication.shared.terminate(self)
         }
         //print("current: \(imagesManager.currentFile)")
         startGUI()
@@ -434,7 +434,7 @@ class MainViewController: NSViewController {
         }
     }
 
-    func doAutoplay() {
+    @objc func doAutoplay() {
 //        print("doAutoplay")
         if autoplay == true {
             if direction == "forward" {
@@ -481,7 +481,7 @@ class MainViewController: NSViewController {
 
     // open current image in Preview
     func openCurrentExternally() {
-        if NSWorkspace.shared().open(imagesManager.currentFile) == false {
+        if NSWorkspace.shared.open(imagesManager.currentFile) == false {
             NSLog("Couldn't open file with Preview: \(imagesManager.currentFile)")
         }
     }

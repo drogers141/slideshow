@@ -72,7 +72,7 @@ class ConfigManager {
     let userDefaults = UserDefaults.standard
 
     func getWinConfigKey() -> String? {
-        if let screen = NSScreen.main() {
+        if let screen = NSScreen.main {
             let f = screen.frame
             let width = Int(f.width)
             let height = Int(f.height)

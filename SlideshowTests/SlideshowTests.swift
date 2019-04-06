@@ -21,13 +21,30 @@ class SlideshowTests: XCTestCase {
         super.tearDown()
     }
 
-    func testGlobMatch() {
+    func testGlobMatch1() {
+
+        let expected = [
+            ("", "", true)
+//            ("", "string", true),
+//            ("*str*", "string", true),
+//            ("*str*", "a string", true),
+//            ("*str*", "end of str", true),
+//            ("*str*", "a string then a string", true),
+//            ("*str*", "String", true),
+
+        ]
+        for (glob, target, result) in expected {
+            XCTAssertEqual(Glob.match(glob, target), result, "glob: \(glob), target: \(target)")
+        }
+
+    }
+    func testGlobMatch2() {
         // check "*str" ->  "a string"
         // and "str*" -> "a string"
-//        let globs = ["*str*", "str*", "*str", "*", "", "*str*str*"]
-//        let strings = ["string1", "a string", "part of a str", "a string then a string"]
-//        let expected = [
-//        ]
+        //        let globs = ["*str*", "str*", "*str", "*", "", "*str*str*"]
+        //        let strings = ["string1", "a string", "part of a str", "a string then a string"]
+        //        let expected = [
+        //        ]
         let expected = [
             ("", "string", true),
             ("*str*", "string", true),
@@ -53,23 +70,25 @@ class SlideshowTests: XCTestCase {
             ("*", "a string then a string", true),
         ]
         for (glob, target, result) in expected {
+            print("glob: \(glob)")
             XCTAssertEqual(Glob.match(glob, target), result, "glob: \(glob), target: \(target)")
         }
 
-//        for target in strings {
-//            for glob in globs {
-//                var result = false
-//                if match(glob, target) {
-//                    result = true
-//                }
-//                print("glob: \(glob), target: \(target), match: \(result)")
-//            }
-//        }
+        //        for target in strings {
+        //            for glob in globs {
+        //                var result = false
+        //                if match(glob, target) {
+        //                    result = true
+        //                }
+        //                print("glob: \(glob), target: \(target), match: \(result)")
+        //            }
+        //        }
     }
 
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssert(true)
     }
 
 

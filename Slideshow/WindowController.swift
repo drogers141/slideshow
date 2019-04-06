@@ -11,7 +11,7 @@ import Cocoa
 class WindowController: NSWindowController, NSWindowDelegate {
 
     func getDefaultFrame() -> NSRect? {
-        guard let screen = NSScreen.main() else { return nil }
+        guard let screen = NSScreen.main else { return nil }
         let screenRect = screen.visibleFrame
 //        print("screen.visibleFrame: \(screenRect)")
 //        print("screen.frame: \(screen.frame)")
@@ -83,8 +83,8 @@ class WindowController: NSWindowController, NSWindowDelegate {
     // handles escape key - cancelOperation is in an NSWindow
     // that would get it first - if not implemented gets caught by this
     // note no override
-    func cancel(_ id: Any?) {
-//        print("cancelOperation")
+    @objc func cancel(_ id: Any?) {
+        print("cancelOperation")
         if let window = window {
             window.close()
         }

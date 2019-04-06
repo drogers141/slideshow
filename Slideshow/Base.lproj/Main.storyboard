@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -601,7 +600,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -665,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="WindowController" customModule="Slideshow" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Slideshow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Slideshow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -717,13 +716,13 @@
                         <subviews>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZES-g9-jMB">
                                 <rect key="frame" x="0.0" y="0.0" width="693" height="518"/>
-                                <clipView key="contentView" drawsBackground="NO" id="2CQ-hZ-wrz">
+                                <clipView key="contentView" id="2CQ-hZ-wrz">
                                     <rect key="frame" x="1" y="1" width="691" height="516"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" id="gIO-Q4-LLZ">
                                             <rect key="frame" x="0.0" y="0.0" width="691" height="516"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="UnQ-vt-p6C">
                                                 <size key="itemSize" width="50" height="50"/>
                                             </collectionViewFlowLayout>
@@ -776,7 +775,7 @@
                                         <rect key="frame" x="20" y="720" width="935" height="50"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aq9-Bz-zvf">
-                                                <rect key="frame" x="0.0" y="16.5" width="747" height="17"/>
+                                                <rect key="frame" x="0.0" y="17" width="747" height="17"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vlv-C9-MNY" userLabel="Image Index Label">
                                                         <rect key="frame" x="-2" y="0.0" width="84" height="17"/>
@@ -811,7 +810,7 @@
                                                 <rect key="frame" x="755" y="14" width="180" height="22"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m3L-0F-Tdx">
-                                                        <rect key="frame" x="-2" y="2.5" width="44" height="17"/>
+                                                        <rect key="frame" x="-2" y="3" width="44" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="xRO-Mu-4CP"/>
                                                         </constraints>
@@ -828,7 +827,7 @@
                                                         </constraints>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="P0S-r7-mjV">
                                                             <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
@@ -863,7 +862,7 @@
                                         <imageCell key="cell" alignment="left" animates="YES" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="benderama" id="NSC-Fd-D0n"/>
                                     </imageView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7Q-xZ-sXI" userLabel="Footer Stack View">
-                                        <rect key="frame" x="278.5" y="0.0" width="418" height="76"/>
+                                        <rect key="frame" x="279" y="0.0" width="418" height="76"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j82-TH-bci">
                                                 <rect key="frame" x="0.0" y="13" width="68" height="50"/>
@@ -899,7 +898,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7P-JP-Shs">
-                                                <rect key="frame" x="76" y="27.5" width="188" height="21"/>
+                                                <rect key="frame" x="76" y="28" width="188" height="21"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XLf-Fg-wTG">
                                                         <rect key="frame" x="-6" y="-7" width="57" height="32"/>
@@ -956,7 +955,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZnZ-5l-ftG">
-                                                <rect key="frame" x="272" y="12.5" width="92" height="51"/>
+                                                <rect key="frame" x="272" y="13" width="92" height="51"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbd-0S-3Ml">
                                                         <rect key="frame" x="-6" y="23" width="93" height="32"/>
@@ -986,7 +985,7 @@
                                                                 </constraints>
                                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="0.125" drawsBackground="YES" id="noT-TP-qwk">
                                                                     <font key="font" metaFont="system"/>
-                                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
@@ -1014,7 +1013,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Al-Qm-glU">
-                                                <rect key="frame" x="372" y="5.5" width="46" height="65"/>
+                                                <rect key="frame" x="372" y="6" width="46" height="65"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EYN-qe-J6K">
                                                         <rect key="frame" x="0.0" y="48" width="46" height="17"/>
@@ -1119,4 +1118,3 @@
         <image name="benderama" width="800" height="451"/>
     </resources>
 </document>
-

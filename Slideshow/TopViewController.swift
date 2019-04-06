@@ -70,7 +70,7 @@ class TopViewController: NSSplitViewController {
         } else {
             var divPos = dividerPos
             if divPos == 0.0 {
-                if let screen = NSScreen.main() {
+                if let screen = NSScreen.main {
                     if screen.frame.width == 1440 {
                         // laptop
                         divPos = getThumbsWidth(2)

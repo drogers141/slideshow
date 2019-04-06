@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-        let screen = NSScreen.main()
+        let screen = NSScreen.main
         let screenRect = screen?.visibleFrame
         NSLog("screen.visibleFrame: \(String(describing: screenRect))")
 //        print("screen.visibleFrame: \(screenRect)")

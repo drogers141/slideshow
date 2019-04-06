@@ -15,9 +15,17 @@ import Foundation
 class Glob {
     // if the substring is found in the target string, return the remainder of the target
     // after the substring
+//    static private func findAndGetRemaining(sub: String, target: String) -> String? {
+//        if let matchRange = target.range(of: sub) {
+//            return target[matchRange.upperBound..<target.endIndex]
+//        } else {
+//            return nil
+//        }
+//    }
     static private func findAndGetRemaining(sub: String, target: String) -> String? {
         if let matchRange = target.range(of: sub) {
-            return target[matchRange.upperBound..<target.endIndex]
+            return target.substring(with: matchRange.upperBound..<target.endIndex)
+            //return target[matchRange.upperBound.encodedOffset..<target.endIndex.encodedOffset]
         } else {
             return nil
         }

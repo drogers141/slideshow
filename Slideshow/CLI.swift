@@ -62,11 +62,11 @@ func handleProgramArgs() -> (String, Array<String>) {
         } else {
             print("file doesn't exist: \(firstArg)")
             print(usage)
-            NSApplication.shared().terminate(nil)
+            NSApplication.shared.terminate(nil)
         }
     } else {
         print(usage)
-        NSApplication.shared().terminate(nil)
+        NSApplication.shared.terminate(nil)
     }
     return (type, content)
 }

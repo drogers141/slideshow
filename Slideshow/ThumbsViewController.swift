@@ -35,7 +35,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = thumbSize
-        flowLayout.sectionInset = EdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
+        flowLayout.sectionInset = NSEdgeInsets(top: 10.0, left: 20.0, bottom: 10.0, right: 20.0)
         flowLayout.minimumInteritemSpacing = 20.0
         flowLayout.minimumLineSpacing = 20.0
         collectionView.collectionViewLayout = flowLayout
@@ -121,7 +121,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
     func collectionView(_ itemForRepresentedObjectAtcollectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 
-        let item = collectionView.makeItem(withIdentifier: "CollectionViewItem", for: indexPath)
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CollectionViewItem"), for: indexPath)
         guard let collectionViewItem = item as? CollectionViewItem else {return item}
         guard let splitVC = parent as? TopViewController else { return item }
 
