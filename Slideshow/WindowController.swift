@@ -85,6 +85,13 @@ class WindowController: NSWindowController, NSWindowDelegate {
     // note no override
     @objc func cancel(_ id: Any?) {
         print("cancelOperation")
+        print("todo - implement shifting to new directory")
+        // so this would check if there are more directories remaining
+        // and if so initialize the images manager with the next directory
+        // ImagesManager.initFilesFromNextDir
+//        if let imagesMgr = ImagesManager {
+//            let moreDirsRemain = imagesMgr.
+//        }
         if let window = window {
             window.close()
         }

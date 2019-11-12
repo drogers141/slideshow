@@ -41,6 +41,18 @@ class ImagesManager {
         remainingDirs = dirs
         currentFiles = ImagesManager.getImages(dirPath: currentDir)
     }
+    
+    // todo - use this to handle multiple directories
+    // need to cleanly call this from the window controller cancel() operation I think
+    func initFilesFromNextDir() -> Bool {
+        guard remainingDirs.count > 0 else {
+            print("No directories remaining ..")
+            return false
+        }
+        let currentDir = remainingDirs.remove(at: 0)
+        currentFiles = ImagesManager.getImages(dirPath: currentDir)
+        return true
+    }
 
     func initFiles(fileList: [String]) {
         currentFiles = ImagesManager.getImages(fileList: fileList)
