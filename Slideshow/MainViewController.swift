@@ -287,6 +287,12 @@ class MainViewController: NSViewController {
     }
 
     func startGUI() {
+        let config = ConfigManager.manager
+        if let winConfig = config.getWinConfig() {
+            autoplayDelay = winConfig.autoplayDelay
+        } else {
+            NSLog("couldn't get winConfig")
+        }
         displayCurrent()
         imageIndexLabel.lineBreakMode = NSLineBreakMode.byTruncatingHead
         imageIndexLabel.title = "\(imagesManager.currentIndex+1)/\(imagesManager.currentFiles.count)"
@@ -342,6 +348,14 @@ class MainViewController: NSViewController {
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
+        NSLog("mainview \(#function) autoplayDelay = \(autoplayDelay)")
+        let config = ConfigManager.manager
+        if let winConfig = config.getWinConfig() {
+            winConfig.autoplayDelay = autoplayDelay
+            config.storeWinConfig(winConfig)
+        } else {
+            NSLog("couldn't get winConfig")
+        }
 //        NSLog("mainview \(#function)")
     }
 

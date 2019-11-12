@@ -11,6 +11,7 @@
 //     thumbsCollapsed: Bool
 //     dividerPos: Double
 //     appearanceTheme: enum := light | dark
+//     autoplayDelay: Double
 //
 import Cocoa
 
@@ -30,20 +31,22 @@ class WinConfig: NSObject, NSCoding {
     var thumbsCollapsed = true
     var dividerPos = 0.0
     var appearanceTheme = AppearanceTheme.dark
+    var autoplayDelay = 4.0
 
     static func defaultConfig() -> WinConfig {
         return WinConfig(key: "", screen: [0.0, 0.0], window: [0.0, 0.0, 0.0, 0.0],
-                         thumbsCollapsed: true, dividerPos: 0.0, appearanceTheme: AppearanceTheme.dark)
+                         thumbsCollapsed: true, dividerPos: 0.0, appearanceTheme: AppearanceTheme.dark, autoplayDelay: 4.0)
     }
 
     init(key: String, screen: [Double], window: [Double], thumbsCollapsed: Bool,
-         dividerPos: Double, appearanceTheme: AppearanceTheme) {
+         dividerPos: Double, appearanceTheme: AppearanceTheme, autoplayDelay: Double) {
         self.key = key
         self.screen = screen
         self.window = window
         self.thumbsCollapsed = thumbsCollapsed
         self.dividerPos = dividerPos
         self.appearanceTheme = appearanceTheme
+        self.autoplayDelay = autoplayDelay
 //        super.init()
     }
 
@@ -54,6 +57,7 @@ class WinConfig: NSObject, NSCoding {
         self.thumbsCollapsed = decoder.decodeBool(forKey: "thumbsCollapsed")
         self.dividerPos = decoder.decodeDouble(forKey: "dividerPos")
         self.appearanceTheme = AppearanceTheme(rawValue: decoder.decodeObject(forKey: "appearanceTheme") as? String ?? "dark")!
+        self.autoplayDelay = decoder.decodeDouble(forKey: "autoplayDelay") ?? 4.0
     }
 
     func encode(with encoder: NSCoder) {
@@ -63,6 +67,7 @@ class WinConfig: NSObject, NSCoding {
         encoder.encode(thumbsCollapsed, forKey: "thumbsCollapsed")
         encoder.encode(dividerPos, forKey: "dividerPos")
         encoder.encode(appearanceTheme.rawValue, forKey: "appearanceTheme")
+        encoder.encode(autoplayDelay, forKey: "autoplayDelay")
     }
 }
 
