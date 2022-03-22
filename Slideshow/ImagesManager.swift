@@ -26,7 +26,7 @@ class ImagesManager {
         }
     }
     // make sure implementation handles uppercase as well
-    static let imageFileExts = [".jpg", ".png", ".gif"]
+    static let imageFileExts = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".webp"]
 
     // TODO - configure copying and trash more, but still minimal
     var copyDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-copy")
