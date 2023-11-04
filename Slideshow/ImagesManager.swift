@@ -31,6 +31,10 @@ class ImagesManager {
     // TODO - configure copying and trash more, but still minimal
     var copyDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-copy")
     var trashDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-trash")
+    
+    func getRemainingDirs() -> [String] {
+        return remainingDirs
+    }
 
     // initialize the manager with either a directory list or a files list
     // this can't be done in the constructor due to vagaries of swift

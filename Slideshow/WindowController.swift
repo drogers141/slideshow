@@ -90,11 +90,24 @@ class WindowController: NSWindowController, NSWindowDelegate {
         // and if so initialize the images manager with the next directory
         // ImagesManager.initFilesFromNextDir
 //        if let imagesMgr = ImagesManager {
-//            let moreDirsRemain = imagesMgr.
+//            let moreDirsRemain = imagesMgr.remainingDirs
+//        }
+        let imagesMgr = ImagesManager()
+        let remainingDirs = imagesMgr.getRemainingDirs()
+        if remainingDirs.isEmpty {
+            if let window = window {
+                window.close()
+            }
+        } else {
+            imagesMgr.initFiles(dirList: remainingDirs)
+        }
+//        if let imagesMgr = ImagesManager {
+//            let remainingDirs = imagesMgr.getRemainingDirs()
 //        }
         if let window = window {
             window.close()
         }
+        
     }
 
 }
