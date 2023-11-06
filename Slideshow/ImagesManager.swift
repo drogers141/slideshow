@@ -32,10 +32,6 @@ class ImagesManager {
     var copyDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-copy")
     var trashDir = URL(fileURLWithPath: "/Users/drogers/atemp/slideshow-trash")
     
-    func getRemainingDirs() -> [String] {
-        return remainingDirs
-    }
-
     // initialize the manager with either a directory list or a files list
     // this can't be done in the constructor due to vagaries of swift
 
@@ -55,6 +51,7 @@ class ImagesManager {
         }
         let currentDir = remainingDirs.remove(at: 0)
         currentFiles = ImagesManager.getImages(dirPath: currentDir)
+        currentIndex = 0
         return true
     }
 

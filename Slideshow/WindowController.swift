@@ -62,8 +62,8 @@ class WindowController: NSWindowController, NSWindowDelegate {
 
             let config = ConfigManager.manager
             if let winConfig = config.getWinConfig() {
-                let key = winConfig.key
-                let win = winConfig.window
+//                let key = winConfig.key
+//                let win = winConfig.window
 //                NSLog("winConfig: key: \(key) win: \(win)")
                 let newWin = [x, y, w, h]
 //                NSLog("storing window frame = \(newWin)")
@@ -84,31 +84,10 @@ class WindowController: NSWindowController, NSWindowDelegate {
     // that would get it first - if not implemented gets caught by this
     // note no override
     @objc func cancel(_ id: Any?) {
-        print("cancelOperation")
-        print("todo - implement shifting to new directory")
-        // so this would check if there are more directories remaining
-        // and if so initialize the images manager with the next directory
-        // ImagesManager.initFilesFromNextDir
-//        if let imagesMgr = ImagesManager {
-//            let moreDirsRemain = imagesMgr.remainingDirs
-//        }
-        let imagesMgr = ImagesManager()
-        let remainingDirs = imagesMgr.getRemainingDirs()
-        if remainingDirs.isEmpty {
-            if let window = window {
-                window.close()
-            }
-        } else {
-            imagesMgr.initFiles(dirList: remainingDirs)
-        }
-//        if let imagesMgr = ImagesManager {
-//            let remainingDirs = imagesMgr.getRemainingDirs()
-//        }
+//        print("cancelOperation")
         if let window = window {
             window.close()
         }
-        
     }
-
 }
 

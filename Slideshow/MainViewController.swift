@@ -106,6 +106,16 @@ class MainViewController: NSViewController {
         ConfigManager.manager.storeWinConfig(winConfig)
         updateAllAppearanceThemes()
     }
+    
+    @IBAction func nextDirBtnClicked(_ sender: NSButton) {
+        NSLog("Next Dir clicked ..")
+        let dirsRemain = self.imagesManager.initFilesFromNextDir()
+        if (dirsRemain) {
+            self.displayCurrent()
+            let thumbsVC = self.getThumbsVC()
+            thumbsVC?.reloadData()
+        }
+    }
 
     func updateAllAppearanceThemes() {
         NSLog("mainview \(#function)")

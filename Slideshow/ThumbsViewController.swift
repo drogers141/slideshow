@@ -65,6 +65,10 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
             backgroundColor = NSColor.windowBackgroundColor.cgColor
         }
     }
+    
+    func reloadData() {
+        self.collectionView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
