@@ -108,7 +108,7 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func nextDirBtnClicked(_ sender: NSButton) {
-        NSLog("Next Dir clicked ..")
+//        NSLog("Next Dir clicked ..")
         let dirsRemain = self.imagesManager.initFilesFromNextDir()
         if (dirsRemain) {
             self.displayCurrent()

@@ -79,7 +79,7 @@ class ThumbsViewController: NSViewController, NSCollectionViewDataSource, NSColl
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        NSLog("thumbsview \(#function)")
+//        NSLog("thumbsview \(#function)")
         if let cvLayer = collectionView.layer {
             cvLayer.backgroundColor = backgroundColor
         } else {
